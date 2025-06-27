@@ -1,0 +1,6 @@
+name,email,password,role,club,creditScore
+John Doe,john.doe@example.com,password123,member,IEEE,10
+Jane Smith,jane.smith@example.com,securepass456,user,ACM,0
+Michael Johnson,michael@example.com,pass789,admin,GDG,15
+Sarah Williams,sarah@example.com,sarahpass,member,AWS,5
+Alex Brown,alex@example.com,alexbrown,user,,0 
