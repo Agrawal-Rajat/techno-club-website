@@ -20,55 +20,55 @@ type TeamMember = {
 const teamMembers: TeamMember[] = [
   {
     id: 'rahul-sharma',
-    name: 'Rahul Sharma',
+    name: 'Shivendre ',
     position: 'President',
     department: 'Computer Science',
     bio: 'Fourth-year student passionate about AI and machine learning. Leading the club\'s vision and strategic initiatives.',
     image: '/images/team/rahul.jpg',
     social: {
-      github: 'https://github.com',
+    
       linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
+  
     },
     color: 'from-blue-600 to-blue-400'
   },
   {
     id: 'priya-patel',
-    name: 'Priya Patel',
+    name: 'Ansh Kumar Rana',
     position: 'Vice President',
-    department: 'Electronics Engineering',
+    department: 'computer Science',
     bio: 'Third-year student with expertise in robotics and embedded systems. Coordinates inter-club activities and workshops.',
     image: '/images/team/priya.jpg',
     social: {
-      github: 'https://github.com',
+     
       linkedin: 'https://linkedin.com'
     },
     color: 'from-purple-600 to-purple-400'
   },
   {
     id: 'amit-singh',
-    name: 'Amit Singh',
-    position: 'Technical Lead',
+    name: 'Jasnit Singh Saini',
+    position: 'Treasurer',
     department: 'Computer Science',
-    bio: 'Fourth-year student specializing in full-stack development. Manages the club\'s technical projects and mentors junior members.',
+    bio: 'Fourth-year student specializing in full-stack development. Manages the club\'s acoounts.',
     image: '/images/team/amit.jpg',
     social: {
-      github: 'https://github.com',
+      
       linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
+    
     },
     color: 'from-indigo-600 to-indigo-400'
   },
   {
     id: 'neha-gupta',
-    name: 'Neha Gupta',
-    position: 'Events Coordinator',
-    department: 'Information Technology',
-    bio: 'Third-year student with exceptional organizational skills. Plans and executes all club events, workshops, and seminars.',
+    name: 'Lomash Badole',
+    position: 'secretary',
+    department: 'Computer Science Busniess Systems',
+    bio: 'Fourth Year student with exceptional organizational skills. Plans and executes all club events, workshops, and seminars.',
     image: '/images/team/neha.jpg',
     social: {
       linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
+     
     },
     color: 'from-pink-600 to-pink-400'
   },

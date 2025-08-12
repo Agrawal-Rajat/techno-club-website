@@ -3,8 +3,22 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex flex-col justify-center items-center text-center px-4 py-20 relative">
-      <div className="absolute top-0 left-0 w-full h-full bg-dot-black/[0.2] pointer-events-none z-0" />
+    <section className="min-h-screen relative flex flex-col justify-center items-center text-center px-4 py-20 text-white">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('team.png')", // Replace with your image path
+        }}
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0f0c29]/80 via-[#302b63]/80 to-[#24243e]/80" />
+
+      {/* Dot Overlay */}
+      <div className="absolute inset-0 bg-dot-black/[0.2] pointer-events-none z-0" />
+
+      {/* Content */}
       <div className="relative z-10 max-w-4xl">
         <p className="mb-4 text-sm font-semibold bg-white/10 px-4 py-1 rounded-full inline-block">
           Revolutionizing Student Tech Communities
@@ -16,7 +30,9 @@ export default function Hero() {
           <span className="text-white">Portal</span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-300 mb-10">
-          A unified digital platform for tech communities featuring smart automation, real-time collaboration tools, and secure operations across all club activities.
+          A unified digital platform for tech communities featuring smart
+          automation, real-time collaboration tools, and secure operations
+          across all club activities.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition">

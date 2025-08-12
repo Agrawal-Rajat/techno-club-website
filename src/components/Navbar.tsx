@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 type NavItem = {
   name: string;
@@ -10,11 +10,11 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { name: 'Home', href: '/' },
-  { name: 'Clubs', href: '/clubs' },
-  { name: 'Events', href: '/events' },
-  { name: 'Team', href: '/#team' },
-  { name: 'Contact', href: '/#contact' },
+  { name: "Home", href: "/" },
+  { name: "Clubs", href: "/clubs" },
+  { name: "Events", href: "/events" },
+  { name: "Team", href: "/#team" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar: React.FC = () => {
@@ -23,11 +23,12 @@ const Navbar: React.FC = () => {
   const { data: session, status } = useSession();
   console.log(session);
   const pathname = usePathname();
-  const isLoading = status === 'loading';
-  const isAuthenticated = status === 'authenticated';
-  
+  const isLoading = status === "loading";
+  const isAuthenticated = status === "authenticated";
+
   // Check if user is admin or superadmin
-  const isAdminUser = session?.user?.role === 'admin' || session?.user?.role === 'superadmin';
+  const isAdminUser =
+    session?.user?.role === "admin" || session?.user?.role === "superadmin";
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -39,29 +40,37 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-black/90 backdrop-blur-xl shadow-lg shadow-purple-900/20' 
-        : 'bg-black/70 backdrop-blur-lg'
-      } border-b border-purple-900/30`}>
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-xl shadow-lg shadow-purple-900/20"
+          : "bg-black/70 backdrop-blur-lg"
+      } border-b border-purple-900/30`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <div className="relative w-10 h-10 mr-2">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-blue-500 rounded-full blur opacity-70"></div>
+                  {/* <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-blue-500 rounded-full blur opacity-70"></div> */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">TC</span>
+                    <img
+                      src="logo_bgremoved.png" // replace with your logo path
+                      alt="Logo"
+                      className="w-18 h-18 object-cover mr"
+                    />
                   </div>
                 </div>
                 <div>
-                  <span className="text-white font-bold text-xl bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 bg-clip-text text-transparent">TechnoClub</span>
+                  <span className="text-white font-bold text-xl bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 bg-clip-text text-transparent">
+                    TechnoClub
+                  </span>
                   <p className="text-xs text-gray-400">Medi-Caps University</p>
                 </div>
               </Link>
@@ -69,17 +78,18 @@ const Navbar: React.FC = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 {navItems.map((item) => {
-                  const isActive = pathname === item.href || 
-                    (pathname === '/' && item.href.startsWith('#'));
-                  
+                  const isActive =
+                    pathname === item.href ||
+                    (pathname === "/" && item.href.startsWith("#"));
+
                   return (
                     <Link
                       key={item.name}
                       href={item.href}
                       className={`px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out hover:bg-purple-900/30 ${
-                        isActive 
-                          ? 'text-white bg-gradient-to-r from-purple-500/20 to-blue-500/20' 
-                          : 'text-gray-300 hover:text-white'
+                        isActive
+                          ? "text-white bg-gradient-to-r from-purple-500/20 to-blue-500/20"
+                          : "text-gray-300 hover:text-white"
                       }`}
                     >
                       {item.name}
@@ -95,43 +105,60 @@ const Navbar: React.FC = () => {
             ) : isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 {isAdminUser && (
-                  <Link 
-                    href="/dashboard" 
+                  <Link
+                    href="/dashboard"
                     className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     Dashboard
                   </Link>
                 )}
-                <Link 
-                  href="/profile" 
+                <Link
+                  href="/profile"
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Profile
                 </Link>
                 <div className="relative group">
-                  <button 
-                    className="flex items-center space-x-2 bg-gray-800 text-white px-3 py-2 rounded-md text-sm hover:bg-gray-700 transition-colors"
-                  >
+                  <button className="flex items-center space-x-2 bg-gray-800 text-white px-3 py-2 rounded-md text-sm hover:bg-gray-700 transition-colors">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden">
                       {session.user?.image ? (
-                        <img src={session.user.image} alt={session.user.name || 'User'} className="w-full h-full object-cover" />
+                        <img
+                          src={session.user.image}
+                          alt={session.user.name || "User"}
+                          className="w-full h-full object-cover"
+                        />
                       ) : (
-                        <span className="text-xs font-bold">{session.user?.name?.charAt(0) || 'U'}</span>
+                        <span className="text-xs font-bold">
+                          {session.user?.name?.charAt(0) || "U"}
+                        </span>
                       )}
                     </div>
-                    <span className="max-w-[100px] truncate">{session.user?.name}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <span className="max-w-[100px] truncate">
+                      {session.user?.name}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
                   <div className="absolute right-0 mt-2 w-48 bg-gray-900 rounded-md shadow-lg py-1 z-50 hidden group-hover:block">
-                    <Link 
-                      href="/profile" 
+                    <Link
+                      href="/profile"
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                     >
                       Profile
                     </Link>
-                    <button 
+                    <button
                       onClick={() => signOut()}
                       className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                     >
@@ -142,8 +169,8 @@ const Navbar: React.FC = () => {
               </div>
             ) : (
               <div className="flex space-x-3">
-                <button 
-                  onClick={() => signIn()} 
+                <button
+                  onClick={() => signIn()}
                   className="text-white px-4 py-2 rounded-lg text-sm border border-purple-500/50 hover:border-purple-500 transition duration-150 ease-in-out"
                 >
                   Sign In
@@ -166,12 +193,36 @@ const Navbar: React.FC = () => {
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               )}
             </button>
@@ -180,20 +231,24 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu, show/hide based on menu state */}
-      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`} id="mobile-menu">
+      <div
+        className={`${isOpen ? "block" : "hidden"} md:hidden`}
+        id="mobile-menu"
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90 backdrop-blur-lg">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || 
-              (pathname === '/' && item.href.startsWith('#'));
-            
+            const isActive =
+              pathname === item.href ||
+              (pathname === "/" && item.href.startsWith("#"));
+
             return (
               <Link
                 key={item.name}
                 href={item.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive 
-                    ? 'text-white bg-gradient-to-r from-purple-500/20 to-blue-500/20' 
-                    : 'text-gray-300 hover:text-white hover:bg-purple-900/30'
+                  isActive
+                    ? "text-white bg-gradient-to-r from-purple-500/20 to-blue-500/20"
+                    : "text-gray-300 hover:text-white hover:bg-purple-900/30"
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -201,7 +256,7 @@ const Navbar: React.FC = () => {
               </Link>
             );
           })}
-          
+
           {/* Mobile auth options */}
           {isAuthenticated ? (
             <>
@@ -249,4 +304,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

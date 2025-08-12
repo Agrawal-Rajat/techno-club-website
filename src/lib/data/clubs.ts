@@ -41,40 +41,29 @@ export const clubsData: Record<string, ClubDetails> = {
     team: [
       {
         id: 'aj',
-        name: 'Alex Johnson',
-        position: 'Chair',
-        initials: 'AJ'
+        name: 'Aditi Pathak',
+        position: 'president',
+        initials: 'AP'
       },
       {
         id: 'sw',
-        name: 'Sara Williams',
-        position: 'Vice Chair',
-        initials: 'SW'
+        name: 'Akshat Agrawl',
+        position: 'Vice President',
+        initials: 'AA'
       },
       {
         id: 'mb',
-        name: 'Michael Brown',
+        name: 'Krish Lehjaria',
         position: 'Secretary',
-        initials: 'MB'
+        initials: 'KL'
       },
       {
         id: 'ed',
-        name: 'Emma Davis',
+        name: 'Yuvraj Singh',
         position: 'Treasurer',
         initials: 'ED'
       },
-      {
-        id: 'dw',
-        name: 'David Wilson',
-        position: 'Technical Lead',
-        initials: 'DW'
-      },
-      {
-        id: 'sm',
-        name: 'Sophia Martinez',
-        position: 'Events Coordinator',
-        initials: 'SM'
-      }
+  
     ],
     events: [
       {
@@ -142,25 +131,25 @@ export const clubsData: Record<string, ClubDetails> = {
     team: [
       {
         id: 'js',
-        name: 'John Smith',
-        position: 'Chair',
-        initials: 'JS'
+        name: 'Priyanka Toke',
+        position: 'President',
+        initials: 'PT'
       },
       {
         id: 'lw',
-        name: 'Laura Wilson',
-        position: 'Vice Chair',
-        initials: 'LW'
+        name: 'Damita Pathak',
+        position: 'Vice President',
+        initials: 'DP'
       },
       {
         id: 'rj',
-        name: 'Robert Johnson',
+        name: 'Vedant Soni',
         position: 'Secretary',
-        initials: 'RJ'
+        initials: 'VS'
       },
       {
         id: 'km',
-        name: 'Kate Miller',
+        name: 'Tanya Somwanshi',
         position: 'Treasurer',
         initials: 'KM'
       }
@@ -215,28 +204,17 @@ export const clubsData: Record<string, ClubDetails> = {
     team: [
       {
         id: 'tr',
-        name: 'Tyler Richards',
+        name: 'Anekant Jain',
         position: 'President',
-        initials: 'TR'
+        initials: 'AJ'
       },
       {
         id: 'jd',
-        name: 'Jessica Davis',
+        name: 'Lochan Vaidya',
         position: 'Vice President',
-        initials: 'JD'
+        initials: 'LV'
       },
-      {
-        id: 'nk',
-        name: 'Neil Kumar',
-        position: 'Technical Lead',
-        initials: 'NK'
-      },
-      {
-        id: 'am',
-        name: 'Alicia Martinez',
-        position: 'Event Coordinator',
-        initials: 'AM'
-      }
+      
     ],
     events: [
       {
@@ -288,8 +266,8 @@ export const clubsData: Record<string, ClubDetails> = {
     team: [
       {
         id: 'rp',
-        name: 'Ryan Park',
-        position: 'Lead Organizer',
+        name: 'Vipul Jat',
+        position: 'President',
         initials: 'RP'
       },
       {
@@ -361,9 +339,9 @@ export const clubsData: Record<string, ClubDetails> = {
     team: [
       {
         id: 'as',
-        name: 'Aiden Smith',
+        name: 'Samvardha Khandwe',
         position: 'President',
-        initials: 'AS'
+        initials: 'SK'
       },
       {
         id: 'lt',
@@ -373,14 +351,14 @@ export const clubsData: Record<string, ClubDetails> = {
       },
       {
         id: 'dc',
-        name: 'Daniel Chen',
-        position: 'Project Manager',
+        name: 'Khadija Saifee',
+        position: 'Secretary',
         initials: 'DC'
       },
       {
         id: 'hr',
-        name: 'Hannah Robinson',
-        position: 'Innovation Lead',
+        name: 'Sujal Dhandre',
+        position: 'Treasurer',
         initials: 'HR'
       }
     ],
@@ -422,4 +400,4 @@ export const clubsData: Record<string, ClubDetails> = {
       }
     ]
   }
-}; 
+};
