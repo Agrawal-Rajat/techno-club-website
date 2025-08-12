@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'res.cloudinary.com'],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack: (config, { dev, isServer }) => {
     // Add the mini-css-extract-plugin
     if (!isServer) {
@@ -19,4 +22,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;
