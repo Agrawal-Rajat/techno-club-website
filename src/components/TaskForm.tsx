@@ -18,8 +18,8 @@ interface FormData {
 }
 
 interface TaskFormProps {
-  task?: TaskData; // or TaskData, depending on what you pass in
-  onSubmit: (data: TaskData) => Promise<void>; // <-- FIXED
+  task?: any;
+  onSubmit: (data: Record<string, any>) => Promise<void>;
   onCancel: () => void;
 }
 
