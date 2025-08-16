@@ -39,8 +39,8 @@ importers:
         specifier: 15.2.3
         version: 15.2.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       next-auth:
-        specifier: 5.0.0-beta.29
-        version: 5.0.0-beta.29(next@15.2.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(nodemailer@6.10.1)(react@19.1.1)
+        specifier: 4.24.11
+        version: 4.24.11(next@15.2.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(nodemailer@6.10.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       nodemailer:
         specifier: ^6.10.0
         version: 6.10.1
@@ -2151,22 +2151,6 @@ packages:
       react-dom: ^17.0.2 || ^18 || ^19
     peerDependenciesMeta:
       '@auth/core':
-        optional: true
-      nodemailer:
-        optional: true
-
-  next-auth@5.0.0-beta.29:
-    resolution: {integrity: sha512-Ukpnuk3NMc/LiOl32njZPySk7pABEzbjhMUFd5/n10I0ZNC7NCuVv8IY2JgbDek2t/PUOifQEoUiOOTLy4os5A==}
-    peerDependencies:
-      '@simplewebauthn/browser': ^9.0.1
-      '@simplewebauthn/server': ^9.0.2
-      next: ^14.0.0-0 || ^15.0.0-0
-      nodemailer: ^6.6.5
-      react: ^18.2.0 || ^19.0.0-0
-    peerDependenciesMeta:
-      '@simplewebauthn/browser':
-        optional: true
-      '@simplewebauthn/server':
         optional: true
       nodemailer:
         optional: true
@@ -5305,14 +5289,6 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       uuid: 8.3.2
-    optionalDependencies:
-      nodemailer: 6.10.1
-
-  next-auth@5.0.0-beta.29(next@15.2.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(nodemailer@6.10.1)(react@19.1.1):
-    dependencies:
-      '@auth/core': 0.40.0(nodemailer@6.10.1)
-      next: 15.2.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      react: 19.1.1
     optionalDependencies:
       nodemailer: 6.10.1
 
