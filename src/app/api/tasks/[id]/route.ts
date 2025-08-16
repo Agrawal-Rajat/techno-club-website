@@ -275,8 +275,8 @@ export async function PATCH(
     return NextResponse.json(task);
   } catch (error: unknown) {
     const err = error as Error;
-    console.error(`PATCH /api/tasks/${id} - Server error:`, err);
-    console.error(`PATCH /api/tasks/${id} - Error stack:`, err.stack);
+    console.error(`PATCH /api/tasks/ - Server error:`, err);
+    console.error(`PATCH /api/tasks/ - Error stack:`, err.stack);
     return NextResponse.json(
       { error: "Server error", message: err.message },
       { status: 500 }
@@ -366,8 +366,8 @@ export async function DELETE(
     return NextResponse.json({ message: "Task deleted successfully" });
   } catch (error: unknown) {
     const err = error as Error;
-    console.error(`DELETE /api/tasks/${id} - Server error:`, err);
-    console.error(`DELETE /api/tasks/${id} - Error stack:`, err.stack);
+    console.error(`DELETE /api/tasks/[id] - Server error:`, err);
+    console.error(`DELETE /api/tasks/[id] - Error stack:`, err.stack);
     return NextResponse.json(
       { error: "Server error", message: err.message },
       { status: 500 }
