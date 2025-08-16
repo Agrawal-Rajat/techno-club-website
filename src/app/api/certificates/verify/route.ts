@@ -66,9 +66,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Find the certificate to verify
+    // Find the certificate to verify (using Mongoose's .id getter)
     const certificateIndex = user.certificates.findIndex(
-      (cert) => cert._id.toString() === certificateId
+      (cert) => cert.id === certificateId
     );
 
     if (certificateIndex === -1) {
