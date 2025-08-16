@@ -31,7 +31,7 @@ const SignIn = () => {
         return;
       }
 
-      router.push("/");
+      router.push("/dashboard");
     } catch (error) {
       setError("Something went wrong. Please try again.");
       setIsLoading(false);
