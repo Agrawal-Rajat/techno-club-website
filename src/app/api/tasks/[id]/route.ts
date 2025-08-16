@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
@@ -6,33 +6,31 @@ import { connectToDatabase } from "@/lib/mongoose";
 import User from "@/lib/models/User";
 import Task from "@/lib/models/Task";
 
-// Define the params type
-type Params = {
-  params: { id: string }; // ✅ remove Promise
-};
-
-export async function GET(req: NextRequest, context: Params) {
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    // Await the params in Next.js 15+
-    const { id } = context.params;
-
-    console.log(`GET /api/tasks/${id} - Fetching task details`);
+    console.log(`GET /api/tasks/${params.id} - Fetching task details`);
     await connectToDatabase();
 
     const session = await getServerSession(authOptions);
     if (!session || !session.user) {
-      console.log(`GET /api/tasks/${id} - Unauthorized: No session found`);
+      console.log(
+        `GET /api/tasks/${params.id} - Unauthorized: No session found`
+      );
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    console.log(`GET /api/tasks/${id} - User:`, {
+    console.log(`GET /api/tasks/${params.id} - User:`, {
       id: session.user.id,
       role: session.user.role,
       club: session.user.club,
     });
 
+    const { id } = params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      console.log(`GET /api/tasks/${id} - Invalid task ID format`);
+      console.log(`GET /api/tasks/${params.id} - Invalid task ID format`);
       return NextResponse.json(
         { error: "Invalid task ID format" },
         { status: 400 }
@@ -44,11 +42,11 @@ export async function GET(req: NextRequest, context: Params) {
       .populate("createdBy", "name email image role club");
 
     if (!task) {
-      console.log(`GET /api/tasks/${id} - Task not found`);
+      console.log(`GET /api/tasks/${params.id} - Task not found`);
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
     }
 
-    console.log(`GET /api/tasks/${id} - Task found:`, {
+    console.log(`GET /api/tasks/${params.id} - Task found:`, {
       id: task._id,
       title: task.title,
       status: task.status,
@@ -62,7 +60,7 @@ export async function GET(req: NextRequest, context: Params) {
 
     // Superadmin can view all tasks
     if (userRole === "superadmin") {
-      console.log(`GET /api/tasks/${id} - Superadmin access granted`);
+      console.log(`GET /api/tasks/${params.id} - Superadmin access granted`);
       return NextResponse.json(task);
     }
 
@@ -71,12 +69,12 @@ export async function GET(req: NextRequest, context: Params) {
       const taskClub = task.club?.toString() || "";
       if (taskClub === userClub) {
         console.log(
-          `GET /api/tasks/${id} - Admin access granted for club task`
+          `GET /api/tasks/${params.id} - Admin access granted for club task`
         );
         return NextResponse.json(task);
       }
       console.log(
-        `GET /api/tasks/${id} - Admin access denied: Task not in admin's club`
+        `GET /api/tasks/${params.id} - Admin access denied: Task not in admin's club`
       );
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -96,24 +94,24 @@ export async function GET(req: NextRequest, context: Params) {
 
       if (assignedToId === userId) {
         console.log(
-          `GET /api/tasks/${id} - Member access granted for assigned task`
+          `GET /api/tasks/${params.id} - Member access granted for assigned task`
         );
         return NextResponse.json(task);
       }
       console.log(
-        `GET /api/tasks/${id} - Member access denied: Task not assigned to user`
+        `GET /api/tasks/${params.id} - Member access denied: Task not assigned to user`
       );
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     console.log(
-      `GET /api/tasks/${id} - Forbidden: User role ${userRole} not allowed`
+      `GET /api/tasks/${params.id} - Forbidden: User role ${userRole} not allowed`
     );
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   } catch (error: unknown) {
     const err = error as Error;
-    console.error(`GET /api/tasks - Server error:`, err);
-    console.error(`GET /api/tasks - Error stack:`, err.stack);
+    console.error(`GET /api/tasks/${params.id} - Server error:`, err);
+    console.error(`GET /api/tasks/${params.id} - Error stack:`, err.stack);
     return NextResponse.json(
       { error: "Server error", message: err.message },
       { status: 500 }
@@ -121,31 +119,34 @@ export async function GET(req: NextRequest, context: Params) {
   }
 }
 
-export async function PATCH(req: NextRequest, context: Params) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    // Await the params in Next.js 15+
-    const { id } = context.params; // ✅ correct
-
-    console.log(`PATCH /api/tasks/${id} - Updating task`);
+    console.log(`PATCH /api/tasks/${params.id} - Updating task`);
     await connectToDatabase();
 
     const session = await getServerSession(authOptions);
     if (!session || !session.user) {
-      console.log(`PATCH /api/tasks/${id} - Unauthorized: No session found`);
+      console.log(
+        `PATCH /api/tasks/${params.id} - Unauthorized: No session found`
+      );
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    console.log(`PATCH /api/tasks/${id} - User:`, {
+    console.log(`PATCH /api/tasks/${params.id} - User:`, {
       id: session.user.id,
       role: session.user.role,
       club: session.user.club,
     });
 
+    const { id } = params;
     const data = await req.json();
-    console.log(`PATCH /api/tasks/${id} - Request data:`, data);
+    console.log(`PATCH /api/tasks/${params.id} - Request data:`, data);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      console.log(`PATCH /api/tasks/${id} - Invalid task ID format`);
+      console.log(`PATCH /api/tasks/${params.id} - Invalid task ID format`);
       return NextResponse.json(
         { error: "Invalid task ID format" },
         { status: 400 }
@@ -154,11 +155,11 @@ export async function PATCH(req: NextRequest, context: Params) {
 
     const task = await Task.findById(id);
     if (!task) {
-      console.log(`PATCH /api/tasks/${id} - Task not found`);
+      console.log(`PATCH /api/tasks/${params.id} - Task not found`);
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
     }
 
-    console.log(`PATCH /api/tasks/${id} - Current task state:`, {
+    console.log(`PATCH /api/tasks/${params.id} - Current task state:`, {
       id: task._id,
       title: task.title,
       status: task.status,
@@ -176,7 +177,7 @@ export async function PATCH(req: NextRequest, context: Params) {
         const assignedToId = task.assignedTo?.toString() || "";
         if (assignedToId !== userId) {
           console.log(
-            `PATCH /api/tasks/${id} - Forbidden: Member can only update their own tasks`
+            `PATCH /api/tasks/${params.id} - Forbidden: Member can only update their own tasks`
           );
           return NextResponse.json(
             { error: "You can only update your assigned tasks" },
@@ -186,7 +187,7 @@ export async function PATCH(req: NextRequest, context: Params) {
 
         if (!["in-progress", "completed"].includes(data.status)) {
           console.log(
-            `PATCH /api/tasks/${id} - Forbidden: Member can only set status to in-progress or completed`
+            `PATCH /api/tasks/${params.id} - Forbidden: Member can only set status to in-progress or completed`
           );
           return NextResponse.json(
             { error: "You can only set tasks to in-progress or completed" },
@@ -200,7 +201,7 @@ export async function PATCH(req: NextRequest, context: Params) {
         const taskClub = task.club?.toString() || "";
         if (taskClub !== userClub) {
           console.log(
-            `PATCH /api/tasks/${id} - Forbidden: Admin can only update tasks in their club`
+            `PATCH /api/tasks/${params.id} - Forbidden: Admin can only update tasks in their club`
           );
           return NextResponse.json(
             { error: "You can only update tasks in your club" },
@@ -218,7 +219,7 @@ export async function PATCH(req: NextRequest, context: Params) {
       !task.isVerified &&
       ["admin", "superadmin"].includes(userRole)
     ) {
-      console.log(`PATCH /api/tasks/${id} - ${userRole} verifying task`);
+      console.log(`PATCH /api/tasks/${params.id} - ${userRole} verifying task`);
 
       // When verifying a completed task, update user's credit score
       if (task.status === "completed" || data.status === "completed") {
@@ -226,7 +227,7 @@ export async function PATCH(req: NextRequest, context: Params) {
         if (assignedUser) {
           const newCreditScore = (assignedUser.creditScore || 0) + task.credits;
           console.log(
-            `PATCH /api/tasks/${id} - Updating user credit score from ${assignedUser.creditScore} to ${newCreditScore}`
+            `PATCH /api/tasks/${params.id} - Updating user credit score from ${assignedUser.creditScore} to ${newCreditScore}`
           );
           await User.findByIdAndUpdate(task.assignedTo, {
             $inc: { creditScore: task.credits },
@@ -245,7 +246,7 @@ export async function PATCH(req: NextRequest, context: Params) {
         const taskClub = task.club?.toString() || "";
         if (taskClub !== userClub) {
           console.log(
-            `PATCH /api/tasks/${id} - Forbidden: Admin can only update tasks in their club`
+            `PATCH /api/tasks/${params.id} - Forbidden: Admin can only update tasks in their club`
           );
           return NextResponse.json(
             { error: "You can only update tasks in your club" },
@@ -267,15 +268,15 @@ export async function PATCH(req: NextRequest, context: Params) {
       }
     }
 
-    console.log(`PATCH /api/tasks/${id} - Saving updated task`);
+    console.log(`PATCH /api/tasks/${params.id} - Saving updated task`);
     await task.save();
-    console.log(`PATCH /api/tasks/${id} - Task updated successfully`);
+    console.log(`PATCH /api/tasks/${params.id} - Task updated successfully`);
 
     return NextResponse.json(task);
   } catch (error: unknown) {
     const err = error as Error;
-    console.error(`PATCH /api/tasks - Server error:`, err);
-    console.error(`PATCH /api/tasks - Error stack:`, err.stack);
+    console.error(`PATCH /api/tasks/${params.id} - Server error:`, err);
+    console.error(`PATCH /api/tasks/${params.id} - Error stack:`, err.stack);
     return NextResponse.json(
       { error: "Server error", message: err.message },
       { status: 500 }
@@ -283,28 +284,31 @@ export async function PATCH(req: NextRequest, context: Params) {
   }
 }
 
-export async function DELETE(req: NextRequest, context: Params) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    // Await the params in Next.js 15+
-    const { id } = context.params; // ✅ correct
-
-    console.log(`DELETE /api/tasks/${id} - Deleting task`);
+    console.log(`DELETE /api/tasks/${params.id} - Deleting task`);
     await connectToDatabase();
 
     const session = await getServerSession(authOptions);
     if (!session || !session.user) {
-      console.log(`DELETE /api/tasks/${id} - Unauthorized: No session found`);
+      console.log(
+        `DELETE /api/tasks/${params.id} - Unauthorized: No session found`
+      );
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    console.log(`DELETE /api/tasks/${id} - User:`, {
+    console.log(`DELETE /api/tasks/${params.id} - User:`, {
       id: session.user.id,
       role: session.user.role,
       club: session.user.club,
     });
 
+    const { id } = params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      console.log(`DELETE /api/tasks/${id} - Invalid task ID format`);
+      console.log(`DELETE /api/tasks/${params.id} - Invalid task ID format`);
       return NextResponse.json(
         { error: "Invalid task ID format" },
         { status: 400 }
@@ -313,11 +317,11 @@ export async function DELETE(req: NextRequest, context: Params) {
 
     const task = await Task.findById(id);
     if (!task) {
-      console.log(`DELETE /api/tasks/${id} - Task not found`);
+      console.log(`DELETE /api/tasks/${params.id} - Task not found`);
       return NextResponse.json({ error: "Task not found" }, { status: 404 });
     }
 
-    console.log(`DELETE /api/tasks/${id} - Task found:`, {
+    console.log(`DELETE /api/tasks/${params.id} - Task found:`, {
       id: task._id,
       title: task.title,
       status: task.status,
@@ -331,7 +335,7 @@ export async function DELETE(req: NextRequest, context: Params) {
     // Check if the task is already verified
     if (task.isVerified) {
       console.log(
-        `DELETE /api/tasks/${id} - Forbidden: Cannot delete verified tasks`
+        `DELETE /api/tasks/${params.id} - Forbidden: Cannot delete verified tasks`
       );
       return NextResponse.json(
         { error: "Verified tasks cannot be deleted" },
@@ -347,7 +351,7 @@ export async function DELETE(req: NextRequest, context: Params) {
 
     if (!isTaskCreator && !isClubAdmin && !isSuperAdmin) {
       console.log(
-        `DELETE /api/tasks/${id} - Forbidden: User does not have permission to delete this task`
+        `DELETE /api/tasks/${params.id} - Forbidden: User does not have permission to delete this task`
       );
       return NextResponse.json(
         { error: "You do not have permission to delete this task" },
@@ -355,15 +359,15 @@ export async function DELETE(req: NextRequest, context: Params) {
       );
     }
 
-    console.log(`DELETE /api/tasks/${id} - Deleting task`);
+    console.log(`DELETE /api/tasks/${params.id} - Deleting task`);
     await Task.findByIdAndDelete(id);
-    console.log(`DELETE /api/tasks/${id} - Task deleted successfully`);
+    console.log(`DELETE /api/tasks/${params.id} - Task deleted successfully`);
 
     return NextResponse.json({ message: "Task deleted successfully" });
   } catch (error: unknown) {
     const err = error as Error;
-    console.error(`DELETE /api/tasks - Server error:`, err);
-    console.error(`DELETE /api/tasks - Error stack:`, err.stack);
+    console.error(`DELETE /api/tasks/${params.id} - Server error:`, err);
+    console.error(`DELETE /api/tasks/${params.id} - Error stack:`, err.stack);
     return NextResponse.json(
       { error: "Server error", message: err.message },
       { status: 500 }
