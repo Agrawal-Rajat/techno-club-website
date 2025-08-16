@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-type UserRole = 'user' | 'member' | 'admin' | 'superadmin';
-type ClubType = '' | 'IEEE' | 'ACM' | 'AWS' | 'GDG' | 'STIC';
+type UserRole = "user" | "member" | "admin" | "superadmin";
+type ClubType = "" | "IEEE" | "ACM" | "AWS" | "GDG" | "STIC";
 
 type User = {
   id: string;
@@ -34,7 +34,7 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
   onError,
 }) => {
   const [role, setRole] = useState<UserRole>(user.role);
-  const [club, setClub] = useState<ClubType>(user.club || '');
+  const [club, setClub] = useState<ClubType>(user.club || "");
   const [creditScore, setCreditScore] = useState<number>(user.creditScore || 0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -52,12 +52,16 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
     const hasClubChanged = club !== user.club;
     const hasCreditChanged = creditScore !== user.creditScore;
 
-    console.log('Before submission - Original user:', user);
-    console.log('Before submission - New values:', { role, club, creditScore });
-    console.log('Changes detected:', { hasRoleChanged, hasClubChanged, hasCreditChanged });
+    console.log("Before submission - Original user:", user);
+    console.log("Before submission - New values:", { role, club, creditScore });
+    console.log("Changes detected:", {
+      hasRoleChanged,
+      hasClubChanged,
+      hasCreditChanged,
+    });
 
     if (!hasRoleChanged && !hasClubChanged && !hasCreditChanged) {
-      setError('No changes to save');
+      setError("No changes to save");
       setLoading(false);
       return;
     }
@@ -66,76 +70,76 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
       // Create an array of promises for each update
       const updates = [];
       const apiEndpoint = isSuperAdmin
-        ? '/api/superadmin/manage-users'
-        : '/api/admin/manage-members';
+        ? "/api/superadmin/manage-users"
+        : "/api/admin/manage-members";
 
       if (hasRoleChanged) {
         const roleUpdateBody = {
           userId: user.id,
-          action: 'update-role',
+          action: "update-role",
           data: { role },
         };
-        console.log('Role update request:', roleUpdateBody);
-        
+        console.log("Role update request:", roleUpdateBody);
+
         updates.push(
           fetch(apiEndpoint, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(roleUpdateBody),
-          }).then(res => res.json())
+          }).then((res) => res.json())
         );
       }
 
       if (hasClubChanged) {
         const clubUpdateBody = {
           userId: user.id,
-          action: 'assign-club',
+          action: "assign-club",
           data: { club },
         };
-        console.log('Club update request:', clubUpdateBody);
-        
+        console.log("Club update request:", clubUpdateBody);
+
         updates.push(
           fetch(apiEndpoint, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(clubUpdateBody),
-          }).then(res => res.json())
+          }).then((res) => res.json())
         );
       }
 
       if (hasCreditChanged) {
         const creditUpdateBody = {
           userId: user.id,
-          action: 'update-credit',
+          action: "update-credit",
           data: { creditScore },
         };
-        console.log('Credit update request:', creditUpdateBody);
-        
+        console.log("Credit update request:", creditUpdateBody);
+
         updates.push(
           fetch(apiEndpoint, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(creditUpdateBody),
-          }).then(res => res.json())
+          }).then((res) => res.json())
         );
       }
 
       // Execute all updates in parallel
       const results = await Promise.all(updates);
-      console.log('API response results:', results);
-      
+      console.log("API response results:", results);
+
       // Check if any request failed
-      const failedUpdate = results.find(result => result.error);
-      
+      const failedUpdate = results.find((result) => result.error);
+
       if (failedUpdate) {
-        throw new Error(failedUpdate.message || 'Failed to update user');
+        throw new Error(failedUpdate.message || "Failed to update user");
       }
 
       // Get the most recent updated user data
       const updatedUser = results[results.length - 1].user || user;
-      console.log('Final updated user:', updatedUser);
-      
-      setSuccessMessage('User updated successfully');
+      console.log("Final updated user:", updatedUser);
+
+      setSuccessMessage("User updated successfully");
       onSuccess?.(updatedUser);
 
       // Close modal after successful update
@@ -143,8 +147,9 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
         onClose();
       }, 1500);
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'An error occurred';
-      console.error('Error during update:', error);
+      const message =
+        error instanceof Error ? error.message : "An error occurred";
+      console.error("Error during update:", error);
       setError(message);
       onError?.(message);
     } finally {
@@ -157,23 +162,23 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
       <div className="bg-gray-900 rounded-xl max-w-md w-full max-h-[90vh] overflow-auto">
         <div className="p-5 border-b border-gray-800 flex justify-between items-center">
           <h2 className="text-xl font-bold">Manage User: {user.name}</h2>
-          <button 
+          <button
             onClick={onClose}
             className="text-gray-400 hover:text-white"
             disabled={loading}
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M6 18L18 6M6 6l12 12" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
               />
             </svg>
           </button>
@@ -185,13 +190,13 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
               {error}
             </div>
           )}
-          
+
           {successMessage && (
             <div className="bg-green-500/20 border border-green-500 text-white p-3 rounded-md">
               {successMessage}
             </div>
           )}
-          
+
           <div>
             <label className="block text-gray-400 mb-2">Role</label>
             <select
@@ -216,7 +221,13 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
             <select
               value={club}
               onChange={(e) => setClub(e.target.value as ClubType)}
-              disabled={loading || (!isSuperAdmin && adminClub && adminClub !== club && club !== '')}
+              disabled={
+                loading ||
+                (!isSuperAdmin &&
+                  !!adminClub &&
+                  adminClub !== club &&
+                  club !== "")
+              }
               className="w-full bg-gray-800 border border-gray-700 rounded-md p-2 text-white"
             >
               <option value="">No Club</option>
@@ -261,7 +272,7 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
               disabled={loading}
               className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-700 text-white py-2 px-4 rounded-md"
             >
-              {loading ? 'Saving...' : 'Save Changes'}
+              {loading ? "Saving..." : "Save Changes"}
             </button>
           </div>
         </form>
@@ -270,4 +281,4 @@ const UserManagementModal: React.FC<UserManagementModalProps> = ({
   );
 };
 
-export default UserManagementModal; 
+export default UserManagementModal;
