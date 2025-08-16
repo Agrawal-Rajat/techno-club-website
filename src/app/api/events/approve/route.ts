@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Use correct type - push the actual ObjectId, not a new one from string
-    event.approvals.push(user._id as mongoose.Types.ObjectId);
+    event.approvals.push(user._id as mongoose.Schema.Types.ObjectId);
 
     // Set isPublished to true - one superadmin approval is enough
     event.isPublished = true;
