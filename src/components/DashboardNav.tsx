@@ -173,9 +173,9 @@ export default function DashboardNav() {
       show: isAdmin,
     },
   {
-  name: "Newsletter",
-  href: "/newsletter.pdf", // public folder me rakhi hui file ka path
-  label: "Newsletter",
+  name: "Yearbook",
+  href: "/yearbook.pdf", // public folder me rakhi hui file ka path
+  label: "Yearbook",
   icon: (
     <svg
       className="w-4 h-4"

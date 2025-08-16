@@ -216,12 +216,12 @@ const ProfilePage: React.FC = () => {
             </div>
 
             {/* Credit Score */}
-            {profile.creditScore && profile.creditScore > 0 && (
+            {/* {profile.creditScore && profile.creditScore > 0 && (
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 px-4 py-2 rounded-full border border-purple-500/30">
                 <span className="text-yellow-400 font-semibold">★</span>
                 <span className="text-white font-medium">Credit Score: {profile.creditScore}</span>
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Profile Form */}

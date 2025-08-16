@@ -71,33 +71,7 @@ const teamMembers: TeamMember[] = [
     // },
     color: 'from-pink-600 to-pink-400'
   },
-  {
-    id: 'arjun-mehta',
-    name: 'Arjun Mehta',
-    position: 'Treasurer',
-    department: 'Computer Science',
-    bio: 'Third-year student handling club finances and budget planning. Ensures resources are allocated efficiently for all activities.',
-    // image: '/team.png',
-    // social: {
-    //   github: 'https://github.com',
-    //   linkedin: 'https://linkedin.com'
-    // },
-    color: 'from-green-600 to-green-400'
-  },
-  {
-    id: 'divya-kumar',
-    name: 'Divya Kumar',
-    position: 'Creative Director',
-    department: 'Design Engineering',
-    bio: 'Second-year student overseeing club branding, social media presence, and promotional materials for all events.',
-    // image: '/team copy.png',
-    // social: {
-    //   github: 'https://github.com',
-    //   linkedin: 'https://linkedin.com',
-    //   twitter: 'https://twitter.com'
-    // },
-    color: 'from-yellow-600 to-yellow-400'
-  }
+
 ];
 
 const TeamSection: React.FC = () => {
@@ -144,7 +118,7 @@ const TeamSection: React.FC = () => {
           {teamMembers.map((member, index) => (
             <div 
               key={member.id}
-              className={`bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 shadow-xl transition-all duration-500 hover:-translate-y-1 group relative transition-all duration-1000 delay-${index * 100 + 200} transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+              className={`bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 shadow-xl transition-all duration-500 hover:-translate-y-1 group relative delay-${index * 100 + 200} transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
             >

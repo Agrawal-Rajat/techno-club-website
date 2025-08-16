@@ -127,7 +127,7 @@ export default function ClubPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [imageErrorByMemberId, setImageErrorByMemberId] = useState<Record<string, boolean>>({});
-  
+
   // Form state for join club
   const [formData, setFormData] = useState({
     firstName: '',
@@ -413,7 +413,7 @@ export default function ClubPage() {
                 </div>
               ) : (
                 <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800 p-8 text-center">
-                  <p className="text-gray-300">No past events to display.</p>
+                  <p className="text-gray-300">To explore past events, visit our Yearbook</p>
                 </div>
               )}
             </div>
@@ -499,51 +499,51 @@ export default function ClubPage() {
                     </div>
                   </div>
 
-                                     <div>
-                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                     <input
-                       type="email"
-                       id="email"
-                       name="email"
-                       value={formData.email}
-                       onChange={handleInputChange}
-                       required
-                       className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                       placeholder="you@example.com"
-                     />
-                   </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      placeholder="you@example.com"
+                    />
+                  </div>
 
-                   <div>
-                     <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-300 mb-2">Contact Number</label>
-                     <input
-                       type="tel"
-                       id="contactNumber"
-                       name="contactNumber"
-                       value={formData.contactNumber}
-                       onChange={handleInputChange}
-                       required
-                       className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                       placeholder="+91 98765 43210"
-                     />
-                   </div>
+                  <div>
+                    <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-300 mb-2">Contact Number</label>
+                    <input
+                      type="tel"
+                      id="contactNumber"
+                      name="contactNumber"
+                      value={formData.contactNumber}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
 
-                   <div>
-                     <label htmlFor="year" className="block text-sm font-medium text-gray-300 mb-2">Year of Study</label>
-                     <select
-                       id="year"
-                       name="year"
-                       value={formData.year}
-                       onChange={handleInputChange}
-                       required
-                       className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                     >
-                       <option value="">Select your year</option>
-                       <option value="1">First Year</option>
-                       <option value="2">Second Year</option>
-                       <option value="3">Third Year</option>
-                       <option value="4">Fourth Year</option>
-                     </select>
-                   </div>
+                  <div>
+                    <label htmlFor="year" className="block text-sm font-medium text-gray-300 mb-2">Year of Study</label>
+                    <select
+                      id="year"
+                      name="year"
+                      value={formData.year}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    >
+                      <option value="">Select your year</option>
+                      <option value="1">First Year</option>
+                      <option value="2">Second Year</option>
+                      <option value="3">Third Year</option>
+                      <option value="4">Fourth Year</option>
+                    </select>
+                  </div>
 
                   <div>
                     <label htmlFor="reason" className="block text-sm font-medium text-gray-300 mb-2">Why do you want to join {club.name}?</label>

@@ -68,7 +68,7 @@ export const clubsData: Record<string, ClubDetails> = {
         initials: 'ED',
         image: 'Yuvrajsingh.jpg'
       },
-  
+
     ],
     events: [
       {
@@ -219,13 +219,25 @@ export const clubsData: Record<string, ClubDetails> = {
         image: 'AnekantJain.jpg'
       },
       {
-        id: 'jd',
+        id: 'sv',
+        name: 'Shivam Verma',
+        position: 'Techical Lead',
+        initials: 'SV',
+        // image: 'LochanVaidya.jpg'
+      },
+      {
+        id: 'lv',
         name: 'Lochan Vaidya',
         position: 'Vice President',
         initials: 'LV',
         image: 'LochanVaidya.jpg'
+      }, {
+        id: 'dd',
+        name: 'Dolly Malviya',
+        position: 'Operation Head',
+        initials: 'DM',
+        //image: 'LochanVaidya.jpg'
       },
-      
     ],
     events: [
       {
@@ -284,23 +296,23 @@ export const clubsData: Record<string, ClubDetails> = {
       },
       {
         id: 'ml',
-        name: 'Michelle Lee',
-        position: 'Co-organizer',
-        initials: 'ML',
+        name: 'Anurag Agrawal',
+        position: 'Cloud Mentor',
+        initials: 'AA',
         image: ''
       },
       {
-        id: 'kj',
-        name: 'Kevin Jackson',
+        id: 'ys',
+        name: 'Yash Sharma',
         position: 'Technical Lead',
-        initials: 'KJ',
+        initials: 'YS',
         image: ''
       },
       {
         id: 'pc',
-        name: 'Priya Choudhary',
-        position: 'Community Manager',
-        initials: 'PC',
+        name: 'Parakh Maheshwari',
+        position: 'Graphics Head',
+        initials: 'PM',
         image: ''
       }
     ],
@@ -361,9 +373,9 @@ export const clubsData: Record<string, ClubDetails> = {
       },
       {
         id: 'lt',
-        name: 'Lily Thompson',
-        position: 'Vice President',
-        initials: 'LT',
+        name: 'Yuvraj Singh',
+        position: 'technical Lead',
+        initials: 'YS',
         image: ''
       },
       {

@@ -50,8 +50,8 @@ const navItems: NavItem[] = [
   },
   // 
 {
-  name: "Newsletter",
-  href: "/newsletter.pdf", // yeh file /public/newsletter.pdf me rakho
+  name: "Yearbook",
+  href: "/yearbook.pdf", // yeh file /public/newsletter.pdf me rakho
   icon: (
     <svg
       className="w-4 h-4"
