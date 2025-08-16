@@ -60,9 +60,7 @@ const CreateEventPage = () => {
 
     // Get user role and club from session
     if (session?.user) {
-      // @ts-expect-error - session.user.role is not typed in the default NextAuth types
       const role = (session.user.role as string) || "user";
-      // @ts-expect-error - session.user.club is not typed in the default NextAuth types
       const club = (session.user.club as string) || "";
 
       setUserRole(role);
