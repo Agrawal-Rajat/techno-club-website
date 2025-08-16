@@ -13,13 +13,13 @@ interface FormData {
   priority: string;
   assignedTo: string;
   dueDate?: string;
-  status: TaskStatus;
+  status?: TaskStatus;
   isGlobal?: boolean;
 }
 
 interface TaskFormProps {
-  task?: any;
-  onSubmit: (data: Record<string, any>) => Promise<void>;
+  task?: Partial<FormData>; // when editing, not all fields may be present
+  onSubmit: (data: FormData) => Promise<void>; // strict typing
   onCancel: () => void;
 }
 
@@ -108,7 +108,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task, onSubmit, onCancel }) => {
         description: task.description || "",
         credits: task.credits || 10,
         priority: task.priority || "medium",
-        assignedTo: task.assignedTo?._id || "",
+        assignedTo: task.assignedTo || "",
         dueDate: task.dueDate
           ? new Date(task.dueDate).toISOString().substring(0, 10)
           : undefined,
