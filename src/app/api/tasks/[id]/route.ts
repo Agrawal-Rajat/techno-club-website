@@ -8,13 +8,13 @@ import Task from "@/lib/models/Task";
 
 // Define the params type
 type Params = {
-  params: Promise<{ id: string }>;
+  params: { id: string }; // ✅ remove Promise
 };
 
 export async function GET(req: NextRequest, context: Params) {
   try {
     // Await the params in Next.js 15+
-    const { id } = await context.params;
+    const { id } = context.params;
 
     console.log(`GET /api/tasks/${id} - Fetching task details`);
     await connectToDatabase();
@@ -124,7 +124,7 @@ export async function GET(req: NextRequest, context: Params) {
 export async function PATCH(req: NextRequest, context: Params) {
   try {
     // Await the params in Next.js 15+
-    const { id } = await context.params;
+    const { id } = context.params; // ✅ correct
 
     console.log(`PATCH /api/tasks/${id} - Updating task`);
     await connectToDatabase();
@@ -286,7 +286,7 @@ export async function PATCH(req: NextRequest, context: Params) {
 export async function DELETE(req: NextRequest, context: Params) {
   try {
     // Await the params in Next.js 15+
-    const { id } = await context.params;
+    const { id } = context.params; // ✅ correct
 
     console.log(`DELETE /api/tasks/${id} - Deleting task`);
     await connectToDatabase();
