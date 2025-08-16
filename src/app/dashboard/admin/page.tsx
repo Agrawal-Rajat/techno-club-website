@@ -94,6 +94,8 @@ const Sidebar = () => {
               Certificate Verification
             </Link>
           </li>
+
+
           <li>
             <Link 
               href="/profile" 
@@ -201,7 +203,7 @@ const AdminDashboard: React.FC = () => {
       } else if (action === 'assign-club') {
         // If admin has a club, only allow assigning their club
         const adminClub = session?.user?.club as ClubType;
-        const clubToAssign = adminClub && adminClub !== '' 
+        const clubToAssign = adminClub 
           ? adminClub 
           : formData.club as ClubType;
           
@@ -248,7 +250,7 @@ const AdminDashboard: React.FC = () => {
         }));
         setSuccessMessage(`Updated ${selectedUser.name}'s information`);
       } else if (action === 'assign-club') {
-        const clubToAssign = session?.user?.club && session.user.club !== '' 
+        const clubToAssign = session?.user?.club 
           ? session.user.club 
           : formData.club as ClubType;
         setUsers(users.map(user => {
@@ -373,9 +375,9 @@ const AdminDashboard: React.FC = () => {
                 Manage Members
               </h1>
               {session?.user?.club && (
-                <p className="text-gray-400 mt-2">
-                  Admin of club: <span className={`px-2 py-1 rounded-full text-xs ${getClubBadgeClass(session.user.club)}`}>{session.user.club}</span>
-                </p>
+                               <p className="text-gray-400 mt-2">
+                 Admin of club: <span className={`px-2 py-1 rounded-full text-xs ${getClubBadgeClass(session.user.club as ClubType)}`}>{session.user.club}</span>
+               </p>
               )}
             </div>
             <div className="hidden md:block">

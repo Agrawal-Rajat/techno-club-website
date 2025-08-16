@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 
     // Check if user is already participating
     const isParticipating = event.participants.some(
-      participantId => participantId.toString() === user._id.toString()
+      participantId => participantId.toString() === (user._id as mongoose.Types.ObjectId).toString()
     );
     
     if (isParticipating) {
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Add user to participants
-    event.participants.push(user._id);
+    event.participants.push(user._id as mongoose.Schema.Types.ObjectId);
     await event.save();
 
     return NextResponse.json({ 
@@ -163,7 +163,7 @@ export async function DELETE(request: NextRequest) {
 
     // Check if user is participating
     const isParticipating = event.participants.some(
-      participantId => participantId.toString() === user._id.toString()
+      participantId => participantId.toString() === (user._id as mongoose.Types.ObjectId).toString()
     );
     
     if (!isParticipating) {
@@ -175,7 +175,7 @@ export async function DELETE(request: NextRequest) {
 
     // Remove user from participants
     event.participants = event.participants.filter(
-      participantId => participantId.toString() !== user._id.toString()
+      participantId => participantId.toString() !== (user._id as mongoose.Types.ObjectId).toString()
     );
     await event.save();
 

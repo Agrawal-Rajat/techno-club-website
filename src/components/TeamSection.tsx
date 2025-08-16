@@ -8,12 +8,12 @@ type TeamMember = {
   position: string;
   department: string;
   bio: string;
-  image: string;
-  social: {
-    github?: string;
-    linkedin?: string;
-    twitter?: string;
-  };
+//  image: string;
+//  social: {
+  //   github?: string;
+  //   linkedin?: string;
+  //   twitter?: string;
+  // };
   color: string;
 };
 
@@ -24,12 +24,12 @@ const teamMembers: TeamMember[] = [
     position: 'President',
     department: 'Computer Science',
     bio: 'Fourth-year student passionate about AI and machine learning. Leading the club\'s vision and strategic initiatives.',
-    image: '/images/team/rahul.jpg',
-    social: {
+    // image: '/images/team/rahul.jpg',
+    // social: {
     
-      linkedin: 'https://linkedin.com',
+    //   linkedin: 'https://linkedin.com',
   
-    },
+    // },
     color: 'from-blue-600 to-blue-400'
   },
   {
@@ -38,11 +38,10 @@ const teamMembers: TeamMember[] = [
     position: 'Vice President',
     department: 'computer Science',
     bio: 'Third-year student with expertise in robotics and embedded systems. Coordinates inter-club activities and workshops.',
-    image: '/images/team/priya.jpg',
-    social: {
-     
-      linkedin: 'https://linkedin.com'
-    },
+    //image: '/images/team/priya.jpg',
+    //social: {
+        //   linkedin: 'https://linkedin.com'
+    //},
     color: 'from-purple-600 to-purple-400'
   },
   {
@@ -51,12 +50,12 @@ const teamMembers: TeamMember[] = [
     position: 'Treasurer',
     department: 'Computer Science',
     bio: 'Fourth-year student specializing in full-stack development. Manages the club\'s acoounts.',
-    image: '/images/team/amit.jpg',
-    social: {
+    // image: '/images/team/amit.jpg',
+    // social: {
       
-      linkedin: 'https://linkedin.com',
+    //   linkedin: 'https://linkedin.com',
     
-    },
+    // },
     color: 'from-indigo-600 to-indigo-400'
   },
   {
@@ -65,11 +64,11 @@ const teamMembers: TeamMember[] = [
     position: 'secretary',
     department: 'Computer Science Busniess Systems',
     bio: 'Fourth Year student with exceptional organizational skills. Plans and executes all club events, workshops, and seminars.',
-    image: '/images/team/neha.jpg',
-    social: {
-      linkedin: 'https://linkedin.com',
+    // image: '/team copy.png',
+    // social: {
+    //   linkedin: 'https://linkedin.com',
      
-    },
+    // },
     color: 'from-pink-600 to-pink-400'
   },
   {
@@ -78,11 +77,11 @@ const teamMembers: TeamMember[] = [
     position: 'Treasurer',
     department: 'Computer Science',
     bio: 'Third-year student handling club finances and budget planning. Ensures resources are allocated efficiently for all activities.',
-    image: '/images/team/arjun.jpg',
-    social: {
-      github: 'https://github.com',
-      linkedin: 'https://linkedin.com'
-    },
+    // image: '/team.png',
+    // social: {
+    //   github: 'https://github.com',
+    //   linkedin: 'https://linkedin.com'
+    // },
     color: 'from-green-600 to-green-400'
   },
   {
@@ -91,12 +90,12 @@ const teamMembers: TeamMember[] = [
     position: 'Creative Director',
     department: 'Design Engineering',
     bio: 'Second-year student overseeing club branding, social media presence, and promotional materials for all events.',
-    image: '/images/team/divya.jpg',
-    social: {
-      github: 'https://github.com',
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
-    },
+    // image: '/team copy.png',
+    // social: {
+    //   github: 'https://github.com',
+    //   linkedin: 'https://linkedin.com',
+    //   twitter: 'https://twitter.com'
+    // },
     color: 'from-yellow-600 to-yellow-400'
   }
 ];
@@ -177,7 +176,7 @@ const TeamSection: React.FC = () => {
                 <div className={`h-0.5 w-full bg-gradient-to-r ${member.color} mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}></div>
                 
                 <div className="mt-4 flex space-x-3">
-                  {member.social.github && (
+                  {/* {member.social.github && (
                     <a 
                       href={member.social.github} 
                       className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors" 
@@ -212,7 +211,7 @@ const TeamSection: React.FC = () => {
                         <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                       </svg>
                     </a>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

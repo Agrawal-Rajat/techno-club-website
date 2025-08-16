@@ -43,23 +43,23 @@ export default function UserManagementPage() {
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       // Superadmins use the users endpoint to see all users
       // Regular admins use the members endpoint to see only members/users
       const endpoint = isSuperAdmin ? '/api/admin/users' : '/api/admin/members';
       console.log('Fetching users from endpoint:', endpoint);
-      
+
       const response = await fetch(endpoint);
-      
+
       if (!response.ok) {
         console.error('Response not OK:', response.status, response.statusText);
         throw new Error('Failed to fetch users');
       }
-      
+
       const data = await response.json();
       console.log('Fetched data:', data);
-      
+
       // Handle both formats - array or object with users property
       const usersList = Array.isArray(data) ? data : data.users || [];
       setUsers(usersList);
@@ -84,14 +84,14 @@ export default function UserManagementPage() {
   const handleSuccess = (updatedUser: User) => {
     console.log('User successfully updated:', updatedUser);
     setSuccessMessage(`Successfully updated ${updatedUser.name}`);
-    
+
     // Update the user in the list
-    setUsers(prevUsers => 
-      prevUsers.map(user => 
+    setUsers(prevUsers =>
+      prevUsers.map(user =>
         user.id === updatedUser.id ? updatedUser : user
       )
     );
-    
+
     // Clear success message after 3 seconds
     setTimeout(() => {
       setSuccessMessage(null);
@@ -101,7 +101,7 @@ export default function UserManagementPage() {
   const handleError = (message: string) => {
     console.error('Error updating user:', message);
     setError(message);
-    
+
     // Clear error after 3 seconds
     setTimeout(() => {
       setError(null);
@@ -123,19 +123,19 @@ export default function UserManagementPage() {
     <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">User Management</h1>
-        
+
         {error && (
           <div className="bg-red-500/20 border border-red-500 text-white p-4 rounded-md mb-6">
             {error}
           </div>
         )}
-        
+
         {successMessage && (
           <div className="bg-green-500/20 border border-green-500 text-white p-4 rounded-md mb-6">
             {successMessage}
           </div>
         )}
-        
+
         <div className="bg-gray-900 rounded-xl p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold">
@@ -159,7 +159,7 @@ export default function UserManagementPage() {
               </button>
             </div>
           </div>
-          
+
           {filteredUsers.length === 0 ? (
             <p className="text-gray-400 p-4 text-center">No users found</p>
           ) : (
@@ -176,8 +176,11 @@ export default function UserManagementPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredUsers.map(user => (
-                    <tr key={user.id} className="border-b border-gray-800 hover:bg-gray-800/30">
+                  {filteredUsers.map((user) => (
+                    <tr
+                      key={user.id || (user as any)._id || user.email}
+                      className="border-b border-gray-800 hover:bg-gray-800/30"
+                    >
                       <td className="p-3">{user.name}</td>
                       <td className="p-3">{user.email}</td>
                       <td className="p-3">

@@ -22,6 +22,11 @@ export interface IUser extends Document {
   creditScore: number;
   emailVerified?: Date;
   certificates?: Certificate[];
+  // Profile fields
+  bio?: string;
+  enrollmentNumber?: string;
+  year?: number;
+  contactNumber?: string;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -65,7 +70,12 @@ const UserSchema = new Schema<IUser>(
       creditsAwarded: { type: Number, default: 0 },
       submittedAt: { type: Date, default: Date.now },
       verifiedAt: { type: Date }
-    }]
+    }],
+    // Profile fields
+    bio: { type: String },
+    enrollmentNumber: { type: String },
+    year: { type: Number },
+    contactNumber: { type: String }
   },
   { timestamps: true }
 );

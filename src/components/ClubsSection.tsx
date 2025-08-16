@@ -162,7 +162,11 @@ const ClubsSection: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  <Link href={`/clubs/${activeClub.id}`} className={`inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r ${activeClub.color} text-white font-medium hover:shadow-lg transition-all`}>
+                  <Link 
+                    href={`/clubs/${activeClub.id}`} 
+                    className={`inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r ${activeClub.color} text-white font-medium hover:shadow-lg transition-all cursor-pointer relative z-10`}
+                    onClick={() => console.log('Join Club clicked for:', activeClub.name)}
+                  >
                     Join Club
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
@@ -216,7 +220,7 @@ const ClubsSection: React.FC = () => {
                     </Link>
                     <Link href={`#`} className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M7 11v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42S4.61 7.58 7 7.58c1.36 0 2.27.58 2.79 1.08l1.9-1.83C10.47 5.69 8.89 5 7 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H7z" fill-rule="evenodd" clip-rule="evenodd" />
+                        <path d="M7 11v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42S4.61 7.58 7 7.58c1.36 0 2.27.58 2.79 1.08l1.9-1.83C10.47 5.69 8.89 5 7 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H7z" fillRule="evenodd" clipRule="evenodd" />
                       </svg>
                     </Link>
                   </div>

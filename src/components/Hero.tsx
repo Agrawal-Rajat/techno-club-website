@@ -8,7 +8,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('team.png')", // Replace with your image path
+         backgroundImage: "url('team.png')", // Replace with your image path
         }}
       />
 

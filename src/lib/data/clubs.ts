@@ -11,6 +11,7 @@ export type ClubDetails = {
     name: string;
     position: string;
     initials: string;
+    image?: string;
   }>;
   events: Array<{
     id: string;
@@ -43,25 +44,29 @@ export const clubsData: Record<string, ClubDetails> = {
         id: 'aj',
         name: 'Aditi Pathak',
         position: 'president',
-        initials: 'AP'
+        initials: 'AP',
+        image: 'aditi.jpg'
       },
       {
         id: 'sw',
         name: 'Akshat Agrawl',
         position: 'Vice President',
-        initials: 'AA'
+        initials: 'AA',
+        image: 'akshatagrawal.jpg'
       },
       {
         id: 'mb',
         name: 'Krish Lehjaria',
         position: 'Secretary',
-        initials: 'KL'
+        initials: 'KL',
+        image: 'krrishlenjhara.jpg'
       },
       {
         id: 'ed',
         name: 'Yuvraj Singh',
         position: 'Treasurer',
-        initials: 'ED'
+        initials: 'ED',
+        image: 'Yuvrajsingh.jpg'
       },
   
     ],
@@ -133,25 +138,29 @@ export const clubsData: Record<string, ClubDetails> = {
         id: 'js',
         name: 'Priyanka Toke',
         position: 'President',
-        initials: 'PT'
+        initials: 'PT',
+        image: 'PriyankaToke.jpg'
       },
       {
         id: 'lw',
         name: 'Damita Pathak',
         position: 'Vice President',
-        initials: 'DP'
+        initials: 'DP',
+        image: 'DamitaPathak.jpeg'
       },
       {
         id: 'rj',
         name: 'Vedant Soni',
         position: 'Secretary',
-        initials: 'VS'
+        initials: 'VS',
+        image: 'VedantSoni.jpg'
       },
       {
         id: 'km',
         name: 'Tanya Somwanshi',
         position: 'Treasurer',
-        initials: 'KM'
+        initials: 'KM',
+        image: 'TanyaSomwanshi.jpg'
       }
     ],
     events: [
@@ -206,13 +215,15 @@ export const clubsData: Record<string, ClubDetails> = {
         id: 'tr',
         name: 'Anekant Jain',
         position: 'President',
-        initials: 'AJ'
+        initials: 'AJ',
+        image: 'AnekantJain.jpg'
       },
       {
         id: 'jd',
         name: 'Lochan Vaidya',
         position: 'Vice President',
-        initials: 'LV'
+        initials: 'LV',
+        image: 'LochanVaidya.jpg'
       },
       
     ],
@@ -268,25 +279,29 @@ export const clubsData: Record<string, ClubDetails> = {
         id: 'rp',
         name: 'Vipul Jat',
         position: 'President',
-        initials: 'RP'
+        initials: 'RP',
+        image: 'VipulJat.jpg'
       },
       {
         id: 'ml',
         name: 'Michelle Lee',
         position: 'Co-organizer',
-        initials: 'ML'
+        initials: 'ML',
+        image: ''
       },
       {
         id: 'kj',
         name: 'Kevin Jackson',
         position: 'Technical Lead',
-        initials: 'KJ'
+        initials: 'KJ',
+        image: ''
       },
       {
         id: 'pc',
         name: 'Priya Choudhary',
         position: 'Community Manager',
-        initials: 'PC'
+        initials: 'PC',
+        image: ''
       }
     ],
     events: [
@@ -341,25 +356,29 @@ export const clubsData: Record<string, ClubDetails> = {
         id: 'as',
         name: 'Samvardha Khandwe',
         position: 'President',
-        initials: 'SK'
+        initials: 'SK',
+        image: 'SamvardhaKhandwe.png'
       },
       {
         id: 'lt',
         name: 'Lily Thompson',
         position: 'Vice President',
-        initials: 'LT'
+        initials: 'LT',
+        image: ''
       },
       {
         id: 'dc',
         name: 'Khadija Saifee',
         position: 'Secretary',
-        initials: 'DC'
+        initials: 'DC',
+        image: 'khadijasaifee.png'
       },
       {
         id: 'hr',
         name: 'Sujal Dhandre',
         position: 'Treasurer',
-        initials: 'HR'
+        initials: 'HR',
+        image: 'SujalDhandre.png'
       }
     ],
     events: [

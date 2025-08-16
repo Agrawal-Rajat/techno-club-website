@@ -1,9 +1,11 @@
+// 
 import { Metadata } from 'next';
 import { clubsData } from '@/lib/data/clubs';
 
-// Define metadata generator
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const club = clubsData[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+  const club = clubsData[slug]; // Access club directly by slug if clubsData is an object
   
   if (!club) {
     return {
@@ -17,10 +19,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function ClubLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ClubLayout({ children }: { children: React.ReactNode }) {
   return children;
-} 
+}

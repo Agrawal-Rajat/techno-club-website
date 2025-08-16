@@ -87,4 +87,48 @@ export async function sendMeetingInvitation(
     console.error('Error sending meeting invitation emails:', error);
     return false;
   }
+}
+
+/**
+ * Send generic email with custom content
+ */
+export async function sendEmail({
+  to,
+  subject,
+  html,
+  text
+}: {
+  to: string | string[];
+  subject: string;
+  html: string;
+  text?: string;
+}): Promise<boolean> {
+  try {
+    // Verify transporter connection configuration
+    await transporter.verify();
+    
+    const recipients = Array.isArray(to) ? to : [to];
+    
+    // Send emails to all recipients
+    const emailPromises = recipients.map(recipient => {
+      const mailOptions = {
+        from: {
+          name: 'TechnoClub Portal',
+          address: 'koitobanda@gmail.com'
+        },
+        to: recipient,
+        subject,
+        html,
+        text: text || html.replace(/<[^>]*>/g, '') // Strip HTML tags for text version
+      };
+      
+      return transporter.sendMail(mailOptions);
+    });
+    
+    await Promise.all(emailPromises);
+    return true;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    return false;
+  }
 } 

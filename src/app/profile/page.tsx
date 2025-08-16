@@ -316,7 +316,7 @@ const ProfilePage: React.FC = () => {
                 </h3>
 
                 <div>
-                  <label className="text-gray-300 font-medium text-sm">Enrollment Number</label>
+                  <label className="text-gray-300 font-medium text-sm">Enrollment Number Or Scholar Number</label>
                   {isEditing ? (
                     <input
                       type="text"

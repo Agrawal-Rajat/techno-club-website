@@ -5,10 +5,8 @@ if (!process.env.MONGODB_URI) {
 }
 
 const uri = process.env.MONGODB_URI;
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+// Remove deprecated options - they're no longer needed in MongoDB Driver 4.0.0+
+const options = {};
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
@@ -21,13 +19,13 @@ if (process.env.NODE_ENV === 'development') {
   };
 
   if (!globalWithMongo._mongoClientPromise) {
-    client = new MongoClient(uri, options as any);
+    client = new MongoClient(uri, options);
     globalWithMongo._mongoClientPromise = client.connect();
   }
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options as any);
+  client = new MongoClient(uri, options);
   clientPromise = client.connect();
 }
 

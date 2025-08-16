@@ -6,7 +6,7 @@ import User from '@/lib/models/User';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     await connectToDatabase();
@@ -25,7 +25,8 @@ export async function GET(
     }
     
     // Get club name from slug (convert slug to proper club name format)
-    const club = params.slug.toUpperCase();
+    const resolvedParams = await params;
+    const club = resolvedParams.slug.toUpperCase();
     
     // Only fetch published events for regular users
     const query: Record<string, unknown> = { club };

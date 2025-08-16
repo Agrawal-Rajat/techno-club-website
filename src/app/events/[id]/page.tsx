@@ -37,7 +37,7 @@ export default function EventDetailsPage() {
   const { id } = useParams();
   const router = useRouter();
   const { data: session, status } = useSession();
-  
+
   const [event, setEvent] = useState<Event | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,14 +50,15 @@ export default function EventDetailsPage() {
       try {
         setIsLoading(true);
         const response = await fetch(`/api/events/${id}`);
-        
+
+
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error('Event not found');
           }
           throw new Error('Failed to fetch event details');
         }
-        
+
         const data = await response.json();
         setEvent(data);
       } catch (err) {
@@ -81,14 +82,14 @@ export default function EventDetailsPage() {
 
     try {
       setIsRegistering(true);
-      
+
       let endpoint = '/api/events/participate';
       if (event?.ticketPrice && event.ticketPrice > 0) {
         // For paid events, redirect to payment flow
         router.push(`/payment/checkout?eventId=${id}&amount=${event.ticketPrice}`);
         return;
       }
-      
+
       // For free events, register directly
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -97,17 +98,17 @@ export default function EventDetailsPage() {
         },
         body: JSON.stringify({ eventId: id }),
       });
-      
+
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.error || 'Failed to register for event');
       }
-      
+
       // Refresh event data to update participation status
       const updatedEventResponse = await fetch(`/api/events/${id}`);
       const updatedEvent = await updatedEventResponse.json();
       setEvent(updatedEvent);
-      
+
     } catch (err) {
       console.error('Error registering for event:', err);
       setError(err instanceof Error ? err.message : 'Failed to register for event');
@@ -123,7 +124,7 @@ export default function EventDetailsPage() {
 
     try {
       setIsUnregistering(true);
-      
+
       const response = await fetch('/api/events/unregister', {
         method: 'POST',
         headers: {
@@ -131,17 +132,17 @@ export default function EventDetailsPage() {
         },
         body: JSON.stringify({ eventId: id }),
       });
-      
+
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.error || 'Failed to unregister from event');
       }
-      
+
       // Refresh event data to update participation status
       const updatedEventResponse = await fetch(`/api/events/${id}`);
       const updatedEvent = await updatedEventResponse.json();
       setEvent(updatedEvent);
-      
+
     } catch (err) {
       console.error('Error unregistering from event:', err);
       setError(err instanceof Error ? err.message : 'Failed to unregister from event');
@@ -181,8 +182,8 @@ export default function EventDetailsPage() {
             {/* Hero Section */}
             <div className="relative h-64 md:h-80 lg:h-96 w-full overflow-hidden">
               {event.imageUrl ? (
-                <Image 
-                  src={event.imageUrl} 
+                <Image
+                  src={event.imageUrl}
                   alt={event.name}
                   fill
                   style={{ objectFit: 'cover' }}
@@ -192,7 +193,7 @@ export default function EventDetailsPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-900/70 to-indigo-900/70"></div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-black/50"></div>
-              
+
               <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 lg:p-10">
                 <div className="container mx-auto">
                   <span className="inline-block px-3 py-1 mb-4 text-xs font-medium rounded-full bg-purple-700/70 text-purple-100">
@@ -225,7 +226,7 @@ export default function EventDetailsPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Main Content */}
             <div className="container mx-auto px-4 py-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -235,7 +236,7 @@ export default function EventDetailsPage() {
                     <h2 className="text-xl font-semibold text-white mb-4">About This Event</h2>
                     <p className="text-gray-300 whitespace-pre-line">{event.description}</p>
                   </div>
-                  
+
                   <div className="bg-gray-900 rounded-lg shadow-md shadow-purple-900/20 border border-purple-900/20 p-6">
                     <h2 className="text-xl font-semibold text-white mb-4">Event Details</h2>
                     <div className="space-y-4">
@@ -262,7 +263,7 @@ export default function EventDetailsPage() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Right Column: Registration */}
                 <div>
                   <div className="bg-gray-900 rounded-lg shadow-md shadow-purple-900/20 border border-purple-900/20 p-6 sticky top-24">
@@ -287,9 +288,9 @@ export default function EventDetailsPage() {
                         ></div>
                       </div>
                     </div>
-                    
+
                     {status === 'loading' ? (
-                      <button 
+                      <button
                         className="w-full py-3 rounded-md bg-gray-800 text-gray-400 cursor-not-allowed"
                         disabled
                       >
@@ -300,7 +301,7 @@ export default function EventDetailsPage() {
                         This event has ended
                       </div>
                     ) : event.isParticipating ? (
-                      <button 
+                      <button
                         onClick={handleUnregister}
                         disabled={isUnregistering}
                         className="w-full py-3 rounded-md bg-red-900/50 text-red-300 border border-red-800/50 hover:bg-red-900/70 transition-colors"
@@ -312,7 +313,7 @@ export default function EventDetailsPage() {
                         Event is fully booked
                       </div>
                     ) : (
-                      <button 
+                      <button
                         onClick={handleRegister}
                         disabled={isRegistering}
                         className="w-full py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-700 text-white hover:from-purple-700 hover:to-indigo-800 transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50"
@@ -320,10 +321,10 @@ export default function EventDetailsPage() {
                         {isRegistering ? 'Processing...' : `Register${event.ticketPrice > 0 ? ' & Pay' : ' Now'}`}
                       </button>
                     )}
-                    
+
                     {showLoginPrompt && status === 'unauthenticated' && (
                       <div className="mt-4 text-center p-3 bg-purple-900/30 border border-purple-800/30 rounded-md text-purple-200 text-sm">
-                        Please <button 
+                        Please <button
                           onClick={() => router.push('/auth/signin')}
                           className="text-purple-400 hover:text-purple-300 font-medium"
                         >sign in</button> to register for this event
