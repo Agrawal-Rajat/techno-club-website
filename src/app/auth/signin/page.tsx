@@ -1,54 +1,60 @@
-'use client';
+"use client";
 
-import { useState, FormEvent } from 'react';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useState, FormEvent } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const result = await signIn('credentials', {
+      const result = await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/",
+        // redirect: false,
       });
 
       if (result?.error) {
-        setError('Invalid email or password');
+        setError("Invalid email or password");
         setIsLoading(false);
         return;
       }
 
-      router.push('/dashboard');
+      router.push("/");
     } catch (error) {
-      setError('Something went wrong. Please try again.');
+      setError("Something went wrong. Please try again.");
       setIsLoading(false);
     }
   };
 
   const handleGoogleSignIn = () => {
-    signIn('google', { callbackUrl: '/dashboard' });
+    signIn("google", { callbackUrl: "/dashboard" });
   };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">Sign in to your account</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            Sign in to your account
+          </h2>
           <p className="mt-2 text-center text-sm text-gray-400">
-            Or{' '}
-            <Link href="/auth/signup" className="font-medium text-blue-500 hover:text-blue-400">
+            Or{" "}
+            <Link
+              href="/auth/signup"
+              className="font-medium text-blue-500 hover:text-blue-400"
+            >
               create a new account
             </Link>
           </p>
@@ -104,7 +110,10 @@ const SignIn = () => {
                 type="checkbox"
                 className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-400">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-sm text-gray-400"
+              >
                 Remember me
               </label>
             </div>
@@ -122,7 +131,7 @@ const SignIn = () => {
               disabled={isLoading}
               className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
             >
-              {isLoading ? 'Signing in...' : 'Sign in'}
+              {isLoading ? "Signing in..." : "Sign in"}
             </button>
           </div>
         </form>
@@ -171,4 +180,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn; 
+export default SignIn;
