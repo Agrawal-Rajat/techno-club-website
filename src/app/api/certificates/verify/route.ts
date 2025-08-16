@@ -98,9 +98,6 @@ export async function POST(request: Request) {
     // Save the user
     await user.save();
 
-    // Fix: Properly type the user._id
-    const userIdStr = (user._id as Types.ObjectId).toString();
-
     return NextResponse.json(
       {
         success: true,
