@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongoose";
 import User from "@/lib/models/User";
 import { getServerSession } from "next-auth";
+import { Types } from "mongoose";
 
 export async function POST(request: Request) {
   try {
@@ -66,9 +67,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Find the certificate to verify (using Mongoose's .id getter)
+    // Find the certificate to verify (cast cert as any to access _id)
     const certificateIndex = user.certificates.findIndex(
-      (cert) => cert.id === certificateId
+      (cert: any) => (cert._id as Types.ObjectId).toString() === certificateId
     );
 
     if (certificateIndex === -1) {
