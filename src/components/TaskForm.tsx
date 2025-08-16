@@ -18,7 +18,7 @@ interface FormData {
 }
 
 interface TaskFormProps {
-  task?: Partial<FormData>; // when editing, not all fields may be present
+  task?: Partial<FormData> | null; // when editing, not all fields may be present
   onSubmit: (data: FormData) => Promise<void>; // strict typing
   onCancel: () => void;
 }
