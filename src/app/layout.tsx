@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TechnoClub | College Tech Clubs Community",
+  title: "TechnoClubs | College Tech Clubs Community",
   description: "A platform for college technology clubs to connect, learn, and grow together.",
 };
 
