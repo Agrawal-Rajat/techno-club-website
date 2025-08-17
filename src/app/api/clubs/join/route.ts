@@ -88,29 +88,29 @@ export async function POST(request: NextRequest) {
     await application.save();
 
     // Add application to CSV
-    try {
-      const csvSuccess = await addClubApplicationToCSV({
-        firstName: application.firstName,
-        lastName: application.lastName,
-        email: application.email,
-        contactNumber: application.contactNumber,
-        year: application.year,
-        reason: application.reason,
-        clubSlug: application.clubSlug,
-        clubName: application.clubName,
-        submittedAt: application.submittedAt,
-      });
+    // try {
+    //   const csvSuccess = await addClubApplicationToCSV({
+    //     firstName: application.firstName,
+    //     lastName: application.lastName,
+    //     email: application.email,
+    //     contactNumber: application.contactNumber,
+    //     year: application.year,
+    //     reason: application.reason,
+    //     clubSlug: application.clubSlug,
+    //     clubName: application.clubName,
+    //     submittedAt: application.submittedAt,
+    //   });
 
-      if (!csvSuccess) {
-        return NextResponse.json(
-          { error: "You have already applied to this club" },
-          { status: 409 }
-        );
-      }
-    } catch (error) {
-      console.error("Error adding application to CSV:", error);
-      // Continue even if CSV operation fails
-    }
+    // if (!csvSuccess) {
+    //   return NextResponse.json(
+    //     { error: "You have already applied to this club" },
+    //     { status: 409 }
+    //   );
+    // }
+    // } catch (error) {
+    // console.error("Error adding application to CSV:", error);
+    // Continue even if CSV operation fails
+    // }
 
     return NextResponse.json(
       {
