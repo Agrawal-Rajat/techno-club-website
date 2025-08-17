@@ -17,7 +17,6 @@ export default function ClubsPage() {
       <main className="bg-black min-h-screen text-white">
         {/* Hero Section */}
         <div className="relative py-20 overflow-hidden">
-          {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:20px_20px]"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-black -z-10">
             <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full bg-purple-600/10 blur-3xl"></div>
@@ -42,10 +41,9 @@ export default function ClubsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {Object.values(clubsData).map((club) => {
                 const clubColor = club.color || 'from-purple-600 to-indigo-800';
-                
                 return (
-                  <Link 
-                    href={`/clubs/${club.slug}`} 
+                  <Link
+                    href={`/clubs/${club.slug}`}
                     key={club.id}
                     className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-900/10 group flex flex-col h-full"
                   >
@@ -60,20 +58,30 @@ export default function ClubsPage() {
                           <p className="text-gray-400 text-sm">{club.tagline}</p>
                         </div>
                       </div>
-                      
-                      <p className="text-gray-300 mb-6 flex-1">
-                        {club.description}
-                      </p>
-                      
+
+                      <p className="text-gray-300 mb-6 flex-1">{club.description}</p>
+
                       <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-800">
                         <div className="flex -space-x-2">
-                          {club.team.slice(0, 4).map((member, idx) => (
+                          {club.team.slice(0, 4).map((member) => (
                             <div
                               key={member.id}
-                              className={`w-8 h-8 rounded-full bg-gradient-to-br ${clubColor} flex items-center justify-center text-white text-xs font-bold border-2 border-gray-900`}
+                              className={`w-8 h-8 rounded-full overflow-hidden border-2 border-gray-900`}
                               title={`${member.name}, ${member.position}`}
                             >
-                              {member.initials}
+                              {member.image ? (
+                                <img
+                                  src={`${member.image}`}
+                                  alt={member.name}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <span
+                                  className={`w-full h-full flex items-center justify-center font-bold text-xs text-white bg-gradient-to-br ${clubColor}`}
+                                >
+                                  {member.initials}
+                                </span>
+                              )}
                             </div>
                           ))}
                           {club.team.length > 4 && (
@@ -84,7 +92,13 @@ export default function ClubsPage() {
                         </div>
                         <span className="text-purple-400 group-hover:text-purple-300 transition flex items-center">
                           View Details
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:ml-2 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 ml-1 group-hover:ml-2 transition-all"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
                         </span>
@@ -154,40 +168,18 @@ export default function ClubsPage() {
             <h2 className="text-3xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h2>
             
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
-                <h3 className="text-xl font-bold text-white mb-2">How do I join a club?</h3>
-                <p className="text-gray-300">
-                  Visit the club's page and click on the "Join Club" button. You'll be asked to fill out a brief form and may be invited to attend an orientation session.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
-                <h3 className="text-xl font-bold text-white mb-2">Are there membership fees?</h3>
-                <p className="text-gray-300">
-                  Most clubs have a nominal annual membership fee that covers basic club activities. Special events may have additional costs.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
-                <h3 className="text-xl font-bold text-white mb-2">Can I join multiple clubs?</h3>
-                <p className="text-gray-300">
-                  Yes, you can join multiple clubs based on your interests. However, we recommend balancing your commitments to ensure you can actively participate.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
-                <h3 className="text-xl font-bold text-white mb-2">Do I need prior experience?</h3>
-                <p className="text-gray-300">
-                  No, most clubs welcome members of all skill levels. They offer workshops and mentorship to help beginners grow and learn.
-                </p>
-              </div>
-              
-              <div className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
-                <h3 className="text-xl font-bold text-white mb-2">How can I become a club leader?</h3>
-                <p className="text-gray-300">
-                  Active members can apply for leadership positions during annual elections. Some roles may also be filled through appointment based on demonstrated commitment and skills.
-                </p>
-              </div>
+              {[
+                { q: "How do I join a club?", a: "Visit the club's page and click on the 'Join Club' button. You'll be asked to fill out a brief form and may be invited to attend an orientation session." },
+                { q: "Are there membership fees?", a: "Most clubs have a nominal annual membership fee that covers basic club activities. Special events may have additional costs." },
+                { q: "Can I join multiple clubs?", a: "Yes, you can join multiple clubs based on your interests. However, we recommend balancing your commitments to ensure you can actively participate." },
+                { q: "Do I need prior experience?", a: "No, most clubs welcome members of all skill levels. They offer workshops and mentorship to help beginners grow and learn." },
+                { q: "How can I become a club leader?", a: "Active members can apply for leadership positions during annual elections. Some roles may also be filled through appointment based on demonstrated commitment and skills." }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-gradient-to-br from-gray-900 to-black p-6 rounded-xl border border-purple-900/30">
+                  <h3 className="text-xl font-bold text-white mb-2">{item.q}</h3>
+                  <p className="text-gray-300">{item.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -213,4 +205,4 @@ export default function ClubsPage() {
       <Footer />
     </>
   );
-} 
+}

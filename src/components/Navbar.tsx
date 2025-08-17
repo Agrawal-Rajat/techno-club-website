@@ -166,8 +166,8 @@ const Navbar: React.FC = () => {
                   </div>
                 </div>
                 <div className="transition-all duration-300 group-hover:scale-105">
-                  <span className="text-white font-bold text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
-                    TechnoClub
+                  <span className="font-bold text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+                    TechnoClubs
                   </span>
                   <p className="text-xs text-gray-400 font-medium tracking-wide">
                     Medicaps University

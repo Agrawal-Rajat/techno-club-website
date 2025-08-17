@@ -113,7 +113,7 @@ export async function sendEmail({
     const emailPromises = recipients.map(recipient => {
       const mailOptions = {
         from: {
-          name: 'TechnoClub Portal',
+          name: 'TechnoClubs Portal',
           address: 'koitobanda@gmail.com'
         },
         to: recipient,

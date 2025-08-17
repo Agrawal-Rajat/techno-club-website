@@ -107,7 +107,7 @@ const TeamSection: React.FC = () => {
           <div className="inline-block mb-4 bg-gradient-to-r from-green-600/20 to-teal-600/20 rounded-lg px-3 py-1 border border-green-500/30">
             <p className="text-sm font-medium text-white">Meet Our Team</p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">The <span className="bg-gradient-to-r from-green-400 via-teal-500 to-emerald-500 bg-clip-text text-transparent">Minds</span> Behind TechnoClub</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">The <span className="bg-gradient-to-r from-green-400 via-teal-500 to-emerald-500 bg-clip-text text-transparent">Minds</span> Behind TechnoClubs</h2>
           <p className="text-gray-300 max-w-3xl mx-auto">
             Our dedicated team of student leaders works tirelessly to create opportunities for technical growth
             and foster a collaborative learning environment at Medicaps University.

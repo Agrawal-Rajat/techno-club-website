@@ -420,7 +420,7 @@ export default function ClubPage() {
           </div>
         </section>
 
-        {/* Collaborations section */}
+        {/* Collaborations section
         {club.collaborations && club.collaborations.length > 0 && (
           <section className="py-16 bg-black">
             <div className="container mx-auto px-6">
@@ -445,7 +445,7 @@ export default function ClubPage() {
               </div>
             </div>
           </section>
-        )}
+        )} */}
 
         {/* Join section */}
         <section id="join" className="py-16 bg-gradient-to-b from-black to-gray-900">
