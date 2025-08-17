@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             {/* Social Media Links */}
             <div className="flex space-x-4">
               <a
-                href="https://www.linkedin.com/company/techno-clubs-medicaps/"
+                href="https://www.instagram.com/medicaps_technoclubs?igsh=dTZva3J6d3F4MjM2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white hover:scale-110 transform transition-all duration-300 shadow-lg hover:shadow-pink-500/25"
