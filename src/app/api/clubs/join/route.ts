@@ -8,14 +8,14 @@ import { addClubApplicationToCSV } from '@/lib/csvService';
 export async function POST(request: NextRequest) {
   try {
     // Check if user is logged in
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
     
-    if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: 'Please login first to apply for clubs' },
-        { status: 401 }
-      );
-    }
+    // if (!session?.user?.email) {
+    //   return NextResponse.json(
+    //     { error: 'Please login first to apply for clubs' },
+    //     { status: 401 }
+    //   );
+    // }
 
     const { firstName, lastName, email, contactNumber, year, reason, clubSlug, clubName } = await request.json();
 
@@ -36,22 +36,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Connect to database
-    await connectToDatabase();
+    // // Connect to database
+    // await connectToDatabase();
 
-    // Check if application already exists for this email and club
-    const existingApplication = await ClubApplication.findOne({
-      email,
-      clubSlug,
-      status: { $in: ['pending', 'approved'] }
-    });
+    // // Check if application already exists for this email and club
+    // const existingApplication = await ClubApplication.findOne({
+    //   email,
+    //   clubSlug,
+    //   status: { $in: ['pending', 'approved'] }
+    // });
 
-    if (existingApplication) {
-      return NextResponse.json(
-        { error: 'You have already applied to this club' },
-        { status: 409 }
-      );
-    }
+    // if (existingApplication) {
+    //   return NextResponse.json(
+    //     { error: 'You have already applied to this club' },
+    //     { status: 409 }
+    //   );
+    // }
 
     // Create new application
     const application = new ClubApplication({
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
       submittedAt: new Date()
     });
 
-    await application.save();
+  //  await application.save();
 
     // Add application to CSV
     try {
