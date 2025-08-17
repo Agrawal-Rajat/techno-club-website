@@ -94,7 +94,7 @@ const ClubsSection: React.FC = () => {
           <div className="inline-block mb-4 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-lg px-3 py-1 border border-purple-500/30">
             <p className="text-sm font-medium text-white">Discover Our Clubs</p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Tech Communities at <span className="bg-gradient-to-r from-purple-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Medi-Caps</span></h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Tech Communities at <span className="bg-gradient-to-r from-purple-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Medicaps</span></h2>
           <p className="text-gray-300 max-w-3xl mx-auto">
             Our Techno clubs work with the intention of conducting various seminars, events, and workshops in different technical domains. 
             The main aim of all the clubs is to increase the technical potential of the students of the University.

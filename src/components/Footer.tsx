@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 bg-clip-text text-transparent">TechnoClub</h2>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Empowering students through technology and innovation at Medi-Caps University. Join our community of tech enthusiasts.
+              Empowering students through technology and innovation at Medicaps University. Join our community of tech enthusiasts.
             </p>
             <div className="flex space-x-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Medi-Caps University<br/>AB Road, Pigdamber, Rau<br/>Indore, MP 453331, India</span>
+                <span>Medicaps University<br/>AB Road, Pigdamber, Rau<br/>Indore, MP 453331, India</span>
               </li>
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3 text-indigo-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
         
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} TechnoClub, Medi-Caps University. All rights reserved.
+            © {new Date().getFullYear()} TechnoClub, Medicaps University. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm text-gray-500">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

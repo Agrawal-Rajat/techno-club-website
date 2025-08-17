@@ -110,7 +110,7 @@ const TeamSection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">The <span className="bg-gradient-to-r from-green-400 via-teal-500 to-emerald-500 bg-clip-text text-transparent">Minds</span> Behind TechnoClub</h2>
           <p className="text-gray-300 max-w-3xl mx-auto">
             Our dedicated team of student leaders works tirelessly to create opportunities for technical growth
-            and foster a collaborative learning environment at Medi-Caps University.
+            and foster a collaborative learning environment at Medicaps University.
           </p>
         </div>
 
