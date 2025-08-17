@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       submittedAt: new Date(),
     });
 
-    //  await application.save();
+    await application.save();
 
     // Add application to CSV
     try {
