@@ -64,7 +64,7 @@ const clubs: Club[] = [
     color: 'from-cyan-600 to-cyan-400',
     icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
     members: 180,
-    achievements: ['ACM INDIA Regional Coordinators instead of distinguished award'],
+    achievements: ['ACM INDIA Regional Coordinators '],
     linkedinUrl: 'https://www.linkedin.com/company/acm-student-chapter-medicaps/',
     instagramUrl: 'https://www.instagram.com/medicaps_acm?igsh=dDJlNXAxeWZmdmEw'
   },
@@ -273,5 +273,6 @@ const ClubsSection: React.FC = () => {
     </section>
   );
 };
+
 
 export default ClubsSection;
