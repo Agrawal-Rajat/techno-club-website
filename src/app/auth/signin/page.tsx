@@ -12,6 +12,33 @@ const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  // const handleSubmit = async (e: FormEvent) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setError("");
+
+  //   try {
+  //     const result = await signIn("credentials", {
+  //       email,
+  //       password,
+  //       redirect: false,
+  //     });
+
+  //     if (result?.error) {
+  //       setError("Invalid email or password");
+  //       setIsLoading(false);
+  //       return;
+  //     }
+
+  //     if (!result?.error) {
+  //       router.push("/");
+  //     }
+  //   } catch (error) {
+  //     setError("Something went wrong. Please try again.");
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -21,7 +48,7 @@ const SignIn = () => {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false, // important: prevents auto redirect
+        redirect: false,
       });
 
       if (result?.error) {
@@ -30,9 +57,8 @@ const SignIn = () => {
         return;
       }
 
-      if (result?.ok) {
-        router.push("/dashboard");
-      }
+      // Successful login → redirect
+      router.push("/");
     } catch (error) {
       setError("Something went wrong. Please try again.");
       setIsLoading(false);
