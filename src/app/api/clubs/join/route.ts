@@ -8,14 +8,14 @@ import { addClubApplicationToCSV } from "@/lib/csvService";
 export async function POST(request: NextRequest) {
   try {
     // Check if user is logged in
-    // const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions);
 
-    // if (!session?.user?.email) {
-    //   return NextResponse.json(
-    //     { error: "Please login first to apply for clubs" },
-    //     { status: 401 }
-    //   );
-    // }
+    if (!session?.user?.email) {
+      return NextResponse.json(
+        { error: "Please login first to apply for clubs" },
+        { status: 401 }
+      );
+    }
 
     const {
       firstName,
