@@ -1,13 +1,13 @@
 "use client";
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import ClubsSection from '@/components/ClubsSection';
-import EventsSection from '@/components/EventsSection';
-import TeamSection from '@/components/TeamSection';
-import Footer from '@/components/Footer';
-import ClubCulture from '@/components/clucBenefits';
-import CareerGrowth from '@/components/CareerGrowth';
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import ClubsSection from "@/components/ClubsSection";
+import EventsSection from "@/components/EventsSection";
+import TeamSection from "@/components/TeamSection";
+import Footer from "@/components/Footer";
+import ClubCulture from "@/components/clucBenefits";
+import CareerGrowth from "@/components/CareerGrowth";
 
 export default function Home() {
   return (
@@ -15,11 +15,16 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ClubsSection />
+        <div id="clubs-section">
+          <ClubsSection />
+        </div>
         <EventsSection />
-        <ClubCulture/>
+        <div id="club-culture">
+          <ClubCulture />
+        </div>
+
         <TeamSection />
-        <CareerGrowth/>
+        <CareerGrowth />
       </main>
       <Footer />
     </div>

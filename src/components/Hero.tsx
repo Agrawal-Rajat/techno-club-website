@@ -8,7 +8,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-         backgroundImage: "url('team.png')", // Replace with your image path
+          backgroundImage: "url('team.png')", // Replace with your image path
         }}
       />
 
@@ -35,12 +35,21 @@ export default function Hero() {
           across all club activities.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition">
+          {/* <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition">
             Explore Features
-          </button>
-          <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-full transition">
+          </button> */}
+          <a
+            href="#club-culture"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition"
+          >
+            Explore Features
+          </a>
+          <a
+            href="#clubs-section"
+            className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-full transition"
+          >
             Join the Revolution
-          </button>
+          </a>
         </div>
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto backdrop-blur-sm">
           <StatItem number="5" label="Tech Clubs" />
