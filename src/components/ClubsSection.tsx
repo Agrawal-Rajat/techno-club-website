@@ -75,7 +75,7 @@ const clubs: Club[] = [
     color: 'from-orange-600 to-orange-400',
     icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z',
     members: 120,
-    achievements: ['AWS Cloud Club', 'Organized 2 Pan-India Placement Drills with participation from 70+ universities',
+    achievements: ['Organized 2 Pan-India Placement Drills with participation from 70+ universities',
       'Educated 1000+ students on AWS through impactful sessions & workshops',
       'Recognized among the Top 5 AWS Cloud Clubs in India  by AWS Educate'],
     linkedinUrl: 'https://www.linkedin.com/company/aws-next/',
@@ -276,5 +276,6 @@ const ClubsSection: React.FC = () => {
 
 
 export default ClubsSection;
+
 
 
