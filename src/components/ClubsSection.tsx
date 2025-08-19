@@ -70,7 +70,7 @@ const clubs: Club[] = [
   },
   {
     id: 'aws',
-    name: 'AWS Student Club',
+    name: 'AWS Cloud Club',
     description: 'Learn about cloud computing with Amazon Web Services. Focus on cloud architecture, serverless computing, and AWS certifications.',
     color: 'from-orange-600 to-orange-400',
     icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z',
@@ -276,4 +276,5 @@ const ClubsSection: React.FC = () => {
 
 
 export default ClubsSection;
+
 
