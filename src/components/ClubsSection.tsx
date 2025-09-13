@@ -64,18 +64,18 @@ const clubs: Club[] = [
     color: 'from-cyan-600 to-cyan-400',
     icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
     members: 180,
-    achievements: ['ACM INDIA Regional Coordinators instead of distinguished award'],
+    achievements: ['ACM INDIA Regional Coordinators '],
     linkedinUrl: 'https://www.linkedin.com/company/acm-student-chapter-medicaps/',
     instagramUrl: 'https://www.instagram.com/medicaps_acm?igsh=dDJlNXAxeWZmdmEw'
   },
   {
     id: 'aws',
-    name: 'AWS Student Club',
+    name: 'AWS Cloud Club',
     description: 'Learn about cloud computing with Amazon Web Services. Focus on cloud architecture, serverless computing, and AWS certifications.',
     color: 'from-orange-600 to-orange-400',
     icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z',
     members: 120,
-    achievements: ['AWS Cloud Club', 'Organized 2 Pan-India Placement Drills with participation from 70+ universities',
+    achievements: ['Organized 2 Pan-India Placement Drills with participation from 70+ universities',
       'Educated 1000+ students on AWS through impactful sessions & workshops',
       'Recognized among the Top 5 AWS Cloud Clubs in India  by AWS Educate'],
     linkedinUrl: 'https://www.linkedin.com/company/aws-next/',
@@ -95,7 +95,7 @@ const clubs: Club[] = [
   },
   {
     id: 'stic',
-    name: 'STIC Innovation Club',
+    name: 'Students Technical and  Innovation Club',
     description: 'Science and Technology Innovation Cell promoting research and innovation. Interdisciplinary projects addressing real-world challenges.',
     color: 'from-emerald-600 to-emerald-400',
     icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
@@ -274,4 +274,8 @@ const ClubsSection: React.FC = () => {
   );
 };
 
+
 export default ClubsSection;
+
+
+
