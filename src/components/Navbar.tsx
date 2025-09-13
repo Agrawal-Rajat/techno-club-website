@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { FaWhatsapp } from "react-icons/fa";
 
 type NavItem = {
   name: string;
@@ -88,10 +89,9 @@ const navItems: NavItem[] = [
       </svg>
     ),
   },
-  //
   {
     name: "Yearbook",
-    href: "/yearbook2.pdf", // yeh file /public/newsletter.pdf me rakho
+    href: "/yearbook2.pdf",
     icon: (
       <svg
         className="w-4 h-4"
@@ -143,38 +143,40 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/95 backdrop-blur-xl shadow-2xl shadow-purple-900/30 border-purple-500/20"
-          : "bg-black/80 backdrop-blur-lg border-transparent"
-      } border-b`}
+      className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-black/95 backdrop-blur-xl shadow-2xl shadow-purple-900/30 border-purple-500/20"
+        : "bg-black/80 backdrop-blur-lg border-transparent"
+        } border-b`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
           <div className="flex items-center">
+
+
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center group">
-                <div className="relative w-12 h-12 mr-3 transition-transform duration-300 group-hover:scale-110">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 via-blue-500 to-indigo-600 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                  <div className="relative w-full h-full bg-gradient-to-tr from-purple-600 via-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                    <img
-                      src="/logo_bgremoved.png"
-                      alt="Logo"
-                      className="w-10 h-10 object-cover rounded-full"
-                    />
-                  </div>
+                <div className="relative w-20 h-20 transition-transform duration-300 group-hover:scale-110">
+                  {/* Direct logo only */}
+                  <img
+                    src="/logo_bgremoved.png"
+                    alt="Logo"
+                    className="w-20 h-20 object-contain rounded-full"
+                  />
                 </div>
+
                 <div className="transition-all duration-300 group-hover:scale-105">
-                  <span className="font-bold text-2xl bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
+                  <span className="font-bold text-3xl bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-transparent">
                     TechnoClubs
                   </span>
-                  <p className="text-xs text-gray-400 font-medium tracking-wide">
+                  <p className="text-sm text-gray-400 font-medium tracking-wide">
                     Medicaps University
                   </p>
                 </div>
               </Link>
             </div>
+
+
 
             {/* Desktop Navigation */}
             <div className="hidden md:block ml-12">
@@ -188,20 +190,18 @@ const Navbar: React.FC = () => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out group ${
-                        isActive
-                          ? "text-white bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 shadow-lg shadow-purple-500/20"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
-                      }`}
+                      className={`relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out group ${isActive
+                        ? "text-white bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 shadow-lg shadow-purple-500/20"
+                        : "text-gray-300 hover:text-white hover:bg-white/5"
+                        }`}
                     >
                       <div className="flex items-center space-x-2">
                         {item.icon && (
                           <span
-                            className={`transition-transform duration-300 group-hover:scale-110 ${
-                              isActive
-                                ? "text-purple-400"
-                                : "text-gray-400 group-hover:text-purple-400"
-                            }`}
+                            className={`transition-transform duration-300 group-hover:scale-110 ${isActive
+                              ? "text-purple-400"
+                              : "text-gray-400 group-hover:text-purple-400"
+                              }`}
                           >
                             {item.icon}
                           </span>
@@ -225,8 +225,27 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side - Auth & User Menu */}
+          {/* Right Side - WhatsApp & Auth */}
           <div className="hidden md:flex md:items-center md:space-x-4">
+            {/* WhatsApp Community Button - Always visible */}
+            {/* <div className="relative group">
+              <Link
+                href="https://chat.whatsapp.com/F4bClSFXdn3JsElHD7fHmE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-110 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 group"
+              >
+                <FaWhatsapp className="text-white text-xl" />
+              </Link>
+
+              {/* Tooltip 
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap shadow-lg border border-gray-700 z-[60]">
+                Join WhatsApp Community
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-gray-900"></div>
+              </div>
+            </div>
+             */}
+
             {isLoading ? (
               <div className="flex items-center space-x-3">
                 <div className="h-8 w-24 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-lg animate-pulse"></div>
@@ -274,7 +293,7 @@ const Navbar: React.FC = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2zm0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                           />
                         </svg>
                         <span>Dashboard</span>
@@ -519,9 +538,8 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } md:hidden transition-all duration-300`}
+        className={`${isOpen ? "block" : "hidden"
+          } md:hidden transition-all duration-300`}
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95 backdrop-blur-xl border-t border-gray-700/50">
@@ -534,19 +552,17 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
-                  isActive
-                    ? "text-white bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 shadow-lg shadow-purple-500/20"
-                    : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/10 hover:to-blue-600/10"
-                }`}
+                className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${isActive
+                  ? "text-white bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 shadow-lg shadow-purple-500/20"
+                  : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/10 hover:to-blue-600/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 <div className="flex items-center space-x-3">
                   {item.icon && (
                     <span
-                      className={`${
-                        isActive ? "text-purple-400" : "text-gray-400"
-                      }`}
+                      className={`${isActive ? "text-purple-400" : "text-gray-400"
+                        }`}
                     >
                       {item.icon}
                     </span>
@@ -561,6 +577,20 @@ const Navbar: React.FC = () => {
               </Link>
             );
           })}
+
+          {/* WhatsApp Community Link for Mobile */}
+          <Link
+            href="https://chat.whatsapp.com/F4bClSFXdn3JsElHD7fHmE"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block px-4 py-3 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-green-600/20 hover:to-green-500/20 transition-all duration-200"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="flex items-center space-x-3">
+              <FaWhatsapp className="text-green-400 text-lg" />
+              <span>Join WhatsApp Community</span>
+            </div>
+          </Link>
 
           {/* Mobile auth options */}
           <div className="pt-4 border-t border-gray-700/50">
