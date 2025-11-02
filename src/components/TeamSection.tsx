@@ -17,53 +17,78 @@ type TeamMember = {
 
 const teamMembers: TeamMember[] = [
   {
-    id: 'rahul-sharma',
-    name: 'Shivendra Pratap Singh Patel',
+    id: 'somil-nema',
+    name: 'Somil Nema',
     position: 'President',
     department: 'Computer Science',
-    bio: "Fourth-year student passionate about AI and machine learning. Leading the club's vision and strategic initiatives.",
-    image: 'shivendra.jpg',
+    bio: "Leading the overarching vision and strategic initiatives for all chapters under the Techno Clubs umbrella.",
+    image: 'Somil nema ,Techno clubs , President,8770577994.jpg', // Placeholder
     social: {
-      linkedin: 'https://www.linkedin.com/in/shivendra-pratap-singh-patel-0967a1224/',
+      linkedin: 'https://www.linkedin.com/in/somil-nema-16464b1a5/', // Placeholder
     },
     color: 'from-blue-600 to-blue-400',
   },
   {
-    id: 'priya-patel',
-    name: 'Ansh Kumar Rana',
+    id: 'akshat-agrawal',
+    name: 'Akshat Agrawal',
     position: 'Vice President',
     department: 'Computer Science',
-    bio: 'Third-year student with expertise in robotics and embedded systems. Coordinates inter-club activities and workshops.',
-    image: 'ansh.png',
+    bio: 'Coordinates inter-chapter activities, ensures smooth operations, and supports the club president.',
+    image: 'Akshat Agrawal, Techno Club, Vice President.jpg', // Placeholder
     social: {
-      linkedin: 'https://www.linkedin.com/in/ansh-kumar-rana/',
+      linkedin: 'https://www.linkedin.com/in/akshat-agrawal-3b559224a/', // Placeholder
     },
     color: 'from-purple-600 to-purple-400',
   },
   {
-    id: 'amit-singh',
-    name: 'Jasneet Singh Saini',
-    position: 'Treasurer',
+    id: 'anekant-jain',
+    name: 'Anekant Jain',
+    position: 'Vice President',
     department: 'Computer Science',
-    bio: "Fourth-year student specializing in full-stack development. Manages the club's accounts.",
-    image: 'jasneet.jpg',
+    bio: 'Coordinates inter-chapter activities, ensures smooth operations, and supports the club president.',
+    image: 'AnekantJain.jpg', // Placeholder
     social: {
-      linkedin: 'https://www.linkedin.com/in/jasneet2003/',
+      linkedin: 'https://www.linkedin.com/in/anekantjain01/', // Placeholder
     },
     color: 'from-indigo-600 to-indigo-400',
   },
   {
-    id: 'neha-gupta',
-    name: 'Lomash Badole',
-    position: 'Secretary',
+    id: 'sourabh-mourya',
+    name: 'Sourabh Mourya',
+    position: 'Technical head', // Position from document
     department: 'Computer Science',
-    bio: 'Fourth Year student with exceptional organizational skills. Plans and executes all club events, workshops, and seminars.',
-    image: 'lomash.png',
+    bio: 'Oversees the technical development, infrastructure, and execution of all coding projects and hackathons.',
+    image: 'sourabh mourya.jpg', // Placeholder
     social: {
-      linkedin: 'https://www.linkedin.com/in/lomash-badole-446742184/',
+      linkedin: 'https://www.linkedin.com/in/sourabhmourya/', // Placeholder
+    },
+    color: 'from-green-600 to-green-400',
+  },
+  {
+    id: 'kalyani-soni',
+    name: 'Kalyani Soni',
+    position: 'Content and ideation head', // Position from document
+    department: 'Computer Science',
+    bio: "Manages content creation, marketing strategy, and ideation for major club initiatives.",
+    image: 'kalyani.jpg', // Placeholder
+    social: {
+      linkedin: 'https://www.linkedin.com/in/kalyani-soni-a4063725a/', // Placeholder
     },
     color: 'from-pink-600 to-pink-400',
   },
+  {
+    id: 'devank-dubey',
+    name: 'Devank Dubey',
+    position: 'Design and Graphics head', // Position from document
+    department: 'Computer Science',
+    bio: 'Responsible for all graphic design, branding, and visual content across the Techno Clubs.',
+    image: 'devank.jpg', // Placeholder
+    social: {
+      linkedin: 'https://www.linkedin.com/in/devank-dubey-423824283/', // Placeholder
+    },
+    color: 'from-yellow-600 to-yellow-400',
+  },
+
 ];
 
 const TeamSection: React.FC = () => {
@@ -95,9 +120,8 @@ const TeamSection: React.FC = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div
-          className={`mb-16 text-center transition-all duration-1000 transform ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}
+          className={`mb-16 text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+            }`}
         >
           <div className="inline-block mb-4 bg-gradient-to-r from-green-600/20 to-teal-600/20 rounded-lg px-3 py-1 border border-green-500/30">
             <p className="text-sm font-medium text-white">Meet Our Team</p>
@@ -121,13 +145,11 @@ const TeamSection: React.FC = () => {
           {teamMembers.map((member, index) => (
             <div
               key={member.id}
-              className={`bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 shadow-xl transition-all duration-500 hover:-translate-y-1 group relative delay-${
-                index * 100 + 200
-              } transform ${
-                isVisible
+              className={`bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 shadow-xl transition-all duration-500 hover:-translate-y-1 group relative delay-${index * 100 + 200
+                } transform ${isVisible
                   ? 'translate-y-0 opacity-100'
                   : 'translate-y-10 opacity-0'
-              } cursor-pointer`}
+                } cursor-pointer`}
               onClick={() => {
                 if (member.social?.linkedin) {
                   window.open(

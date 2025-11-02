@@ -29,10 +29,9 @@ export const clubsData: Record<string, ClubDetails> = {
     color: 'from-blue-600 to-blue-800',
     tagline: 'Advancing Technology for Humanity',
     team: [
-      { id: 'aj', name: 'Aditi Pathak', position: 'president', initials: 'AP', image: 'aditi.jpg' },
-      { id: 'sw', name: 'Akshat Agrawl', position: 'Vice President', initials: 'AA', image: 'akshatagrawal.jpg' },
-      { id: 'mb', name: 'Krish Lehjaria', position: 'Secretary', initials: 'KL', image: 'krrishlenjhara.jpg' },
-      { id: 'ed', name: 'Yuvraj Singh', position: 'Treasurer', initials: 'ED', image: 'Yuvrajsingh.jpg' }
+      { id: 'ieee-1', name: 'Rajat Agrawal', position: 'President', initials: 'RA', image: '' },
+      { id: 'ieee-2', name: 'Harshwardhan Singh Sengar', position: 'Vice president', initials: 'HS', image: 'Harshwardhan singh sengar, Vice President IEEE.jpg' },
+      { id: 'ieee-3', name: 'Anusha Singh', position: 'Vice president', initials: 'AS', image: 'Anusha Singh , Vice-president IEEE_1(1).jpg' }
     ]
   },
   'acm': {
@@ -45,10 +44,9 @@ export const clubsData: Record<string, ClubDetails> = {
     color: 'from-green-600 to-green-800',
     tagline: 'Advancing Computing as a Science & Profession',
     team: [
-      { id: 'js', name: 'Priyanka Toke', position: 'President', initials: 'PT', image: 'PriyankaToke.jpg' },
-      { id: 'lw', name: 'Damita Pathak', position: 'Vice President', initials: 'DP', image: 'DamitaPathak.jpeg' },
-      { id: 'rj', name: 'Vedant Soni', position: 'Secretary', initials: 'VS', image: 'VedantSoni.jpg' },
-      { id: 'km', name: 'Tanya Somwanshi', position: 'Treasurer', initials: 'KM', image: 'TanyaSomwanshi.jpg' }
+      { id: 'acm-1', name: 'Atharv Untwale', position: 'President', initials: 'AU', image: 'Atharv Untwale, President , MUACM (8269481880).jpg' },
+      { id: 'acm-2', name: 'Kasak Tolani', position: 'Vice president', initials: 'KT', image: 'Kasak Tolani, Vice President, 7869391715.jpg' },
+      { id: 'acm-3', name: 'Hemant Sharma', position: 'Vice president', initials: 'HS', image: 'Hemant Sharma _ Vice President_.jpg' }
     ]
   },
   'aws': {
@@ -61,10 +59,8 @@ export const clubsData: Record<string, ClubDetails> = {
     color: 'from-orange-600 to-orange-800',
     tagline: 'Building in the Cloud',
     team: [
-      { id: 'tr', name: 'Anekant Jain', position: 'President', initials: 'AJ', image: 'AnekantJain.jpg' },
-      { id: 'sv', name: 'Shivam Verma', position: 'Techical Lead', initials: 'SV' },
-      { id: 'lv', name: 'Lochan Vaidya', position: 'Vice President', initials: 'LV', image: 'LochanVaidya.jpg' },
-      { id: 'dd', name: 'Dolly Malviya', position: 'Operation Head', initials: 'DM' }
+      { id: 'aws-1', name: 'Shivam Verma', position: 'President', initials: 'SV', image: 'Shivam verma, President, AWS CC.jpg' },
+      { id: 'aws-2', name: 'Tanish Mishra', position: 'Vice president', initials: 'TM', image: 'Tanish Mishra , Vice President , AWS (9098355701).jpg' },
     ]
   },
   'gdg': {
@@ -77,10 +73,9 @@ export const clubsData: Record<string, ClubDetails> = {
     color: 'from-red-600 to-red-800',
     tagline: 'Learn. Connect. Build.',
     team: [
-      { id: 'rp', name: 'Vipul Jat', position: 'President', initials: 'RP', image: 'VipulJat.jpg' },
-      { id: 'ml', name: 'Anurag Agrawal', position: 'Cloud Mentor', initials: 'AA' },
-      { id: 'ys', name: 'Yash Sharma', position: 'Technical Lead', initials: 'YS' },
-      { id: 'pc', name: 'Parakh Maheshwari', position: 'Graphics Head', initials: 'PM' }
+      { id: 'gdg-1', name: 'Devanshu Pal', position: 'President', initials: 'DP', image: '' },
+      { id: 'gdg-2', name: 'Anushka Patidar', position: 'Vice president', initials: 'AP', image: 'Anushka Patidar, Vice President- GDG, 9754725500.jpg' },
+      { id: 'gdg-3', name: 'Bhaskar Mishra', position: 'Vice president', initials: 'BM', image: '' }
     ]
   },
   'stic': {
@@ -93,10 +88,8 @@ export const clubsData: Record<string, ClubDetails> = {
     color: 'from-purple-600 to-indigo-800',
     tagline: 'Innovate. Create. Transform.',
     team: [
-      { id: 'as', name: 'Samvardha Khandwe', position: 'President', initials: 'SK', image: 'SamvardhaKhandwe.png' },
-      { id: 'lt', name: 'Yuvraj Singh', position: 'technical Lead', initials: 'YS' },
-      { id: 'dc', name: 'Khadija Saifee', position: 'Secretary', initials: 'DC', image: 'khadijasaifee.png' },
-      { id: 'hr', name: 'Sujal Dhandre', position: 'Treasurer', initials: 'HR', image: 'SujalDhandre.png' }
+      { id: 'stic-1', name: 'Rudra Chitnis', position: 'President', initials: 'RC', image: 'Rudra Chitnis,President, STIC,8450071921.jpg' },
+      { id: 'stic-2', name: 'Sadgi Garg', position: 'Vice president', initials: 'SG', image: 'Sadgi Garg , Vice-President STIC, 9826053334.jpg' }
     ]
   }
-};
+}
